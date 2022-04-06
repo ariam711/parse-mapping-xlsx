@@ -1,5 +1,5 @@
-import { Autocomplete, TextField } from '@mui/material';
-import React, { forwardRef, PropsWithChildren, useImperativeHandle, useState } from 'react';
+import { Autocomplete, ListItem, TextField } from '@mui/material';
+import React, { forwardRef, PropsWithChildren, useCallback, useImperativeHandle, useState } from 'react';
 import { OptionType } from '../types/OptionType';
 
 export type FldUploadImageProps = {
@@ -10,59 +10,61 @@ export type FldUploadImageProps = {
 
 type SelectForwardProps = PropsWithChildren<Record<string, never>> & { value: string; options: OptionType[] };
 
-const SelectEditor = forwardRef(function SelectEditor({ value, options, ...props }: SelectForwardProps, ref) {
+const SelectEditor = forwardRef(function SelectEditor(props: SelectForwardProps, ref) {
   // const s = useContext(ContextImportStore);
-
-  // console.log(`PROPS: `, props);
-  // console.log(`options: ${JSON.stringify(options, null, 2)}`);
-  // console.log(`PROPS: `, s.optionsToMap);
   const [newValue, setNewValue] = useState<any>(null);
-  useImperativeHandle(ref, () => {
-    return {
-      getValue() {
-        return newValue;
-      }
-    };
-  });
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        getValue() {
+          return newValue?.map || '';
+        }
+      };
+    },
+    [newValue]
+  );
+
+  const updateValue = useCallback((map = '') => {
+    setNewValue({ map });
+  }, []);
+
   return (
     <Autocomplete
       id="free-solo-demo"
       freeSolo
-      options={options}
-      renderInput={params => {
-        console.log(`PARAMS: `, params);
-        return <TextField {...params} />;
-      }}
-      renderOption={(props, option) => {
-        console.log(`Option: ${JSON.stringify(option)}`);
-        return (
-          <li {...props} style={{ color: 'white' }}>
-            {option.map}
-          </li>
-        );
-      }}
+      fullWidth
+      openOnFocus
+      disableCloseOnSelect={false}
+      options={props.options}
+      renderInput={params => (
+        <TextField
+          {...params}
+          variant="outlined"
+          size="small"
+          autoFocus
+          onChange={({ target }) => updateValue(target.value)}
+        />
+      )}
+      renderOption={(props, option) => (
+        <ListItem {...props} style={{ color: '#b1b1b1' }}>
+          {option}
+        </ListItem>
+      )}
       getOptionLabel={(option: any) => {
-        // Value selected with enter, right from the input
         if (typeof option === 'string') {
           return option;
         }
-        // Add "xxx" option created dynamically
         if (option.inputValue) {
           return option.inputValue;
         }
-        // Regular option
         return option.map;
       }}
       onChange={(event, changedValue: any) => {
         if (typeof changedValue === 'string') {
-          setNewValue({
-            title: changedValue
-          });
+          updateValue(changedValue);
         } else if (changedValue?.inputValue) {
-          // Create a new value from the user input
-          setNewValue({
-            title: changedValue.inputValue
-          });
+          updateValue(changedValue.inputValue);
         } else {
           setNewValue(changedValue);
         }

@@ -80,9 +80,7 @@ export class ImportStore {
       const reader = new FileReader();
       if (reader.readAsBinaryString) {
         reader.onload = () => {
-          workbook = read(reader.result, {
-            type: 'binary'
-          });
+          workbook = read(reader.result, { type: 'binary' });
           const sheets = workbook.SheetNames.filter((name: string) => !EXCLUDE_SHEETS.includes(name));
 
           this.setSheets(sheets);

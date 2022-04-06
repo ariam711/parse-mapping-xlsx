@@ -22,7 +22,8 @@ const sx: SxProps = {
     },
     '& .ag-row, & .ag-rich-select-value, & .ag-rich-select-row, & .ag-header-cell-text': {
       color: `#b1b1b1`
-    }
+    },
+    '& .ag-popup-editor': { maxWidth: '400px', width: '100%', border: 'unset' }
   }
 };
 
@@ -36,11 +37,8 @@ const Sheet = () => {
       {
         field: 'map',
         editable: true,
-        cellEditorPopup: true,
-        cellEditor: 'agRichSelectCellEditor',
-        cellEditorParams: {
-          values: store.getOptions
-        }
+        cellEditor,
+        cellEditorParams: { options: store.getOptions }
       }
     ];
   }, [store.getOptions]);
