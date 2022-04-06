@@ -5,6 +5,8 @@ import * as XLSX from 'xlsx';
 import { Range, Sheet, WorkBook } from 'xlsx';
 import { clone } from '../../../utils/clone';
 import { BaseMapType } from '../types/BaseMapType';
+import { generateUrlKey } from './utils/generateUrlKey';
+import { normalizeImageUrl } from './utils/normalizeImageUrl';
 
 const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates'];
 
@@ -159,8 +161,6 @@ export class ImportStore {
     });
   };
 
-  private normalizeImageUrl = (url: string): string => url.replace(/^https?:\/\//i, '');
-
   parseDataToMapping = () => {
     const newBook: any[] = [];
     const data = clone(this.data);
@@ -184,12 +184,17 @@ export class ImportStore {
                 if (!tmp['gallery_images']) {
                   tmp['gallery_images'] = [];
                 }
-                tmp['gallery_images'].push(this.normalizeImageUrl(String(value)));
+                tmp['gallery_images'].push(normalizeImageUrl(String(value)));
               }
               break;
             }
             case 'swatch': {
-              value = this.normalizeImageUrl(String(value));
+              value = normalizeImageUrl(String(value));
+              tmp[mapped] = value;
+              break;
+            }
+            case 'name': {
+              tmp['url_key'] = generateUrlKey(String(value));
               tmp[mapped] = value;
               break;
             }
