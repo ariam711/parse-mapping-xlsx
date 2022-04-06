@@ -1,0 +1,9 @@
+build
+coverage
+node_modules
+.idea
+package-lock.json
+public
+scripts
+config/
+docker

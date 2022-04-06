@@ -1,0 +1,1717 @@
+[
+  [
+    "actual_product_height",
+    [
+      "Product Actual Height"
+    ]
+  ],
+  [
+    "actual_product_length",
+    [
+      "Product Actual Length"
+    ]
+  ],
+  [
+    "actual_product_weight",
+    [
+      "Actual Product Weight"
+    ]
+  ],
+  [
+    "actual_product_width",
+    [
+      "Product Actual Width",
+      "Actual Product Width"
+    ]
+  ],
+  [
+    "adjustable_size",
+    [
+      "Adjustable Size"
+    ]
+  ],
+  [
+    "allow_open_amount",
+    [
+      "Open Amount"
+    ]
+  ],
+  [
+    "assembled_size",
+    [
+      "Assembled Size"
+    ]
+  ],
+  [
+    "assembly",
+    [
+      "assembly"
+    ]
+  ],
+  [
+    "assembly_instructions",
+    [
+      "Assembly Instructions"
+    ]
+  ],
+  [
+    "average_clarity",
+    [
+      "Average Clarity"
+    ]
+  ],
+  [
+    "average_color",
+    [
+      "Average Color"
+    ]
+  ],
+  [
+    "average_cut",
+    [
+      "Average Cut"
+    ]
+  ],
+  [
+    "backing",
+    [
+      "Backing"
+    ]
+  ],
+  [
+    "basic_maintenance",
+    [
+      "Basic Maintenance"
+    ]
+  ],
+  [
+    "bestpads",
+    [
+      "Best 20-Year Warranty"
+    ]
+  ],
+  [
+    "betterpads",
+    [
+      "Better 15-Year Warranty"
+    ]
+  ],
+  [
+    "brand",
+    [
+      "Brand"
+    ]
+  ],
+  [
+    "brand_facet",
+    [
+      "Brand"
+    ]
+  ],
+  [
+    "care",
+    [
+      "Care"
+    ]
+  ],
+  [
+    "carton_depth",
+    [
+      "Carton Depth"
+    ]
+  ],
+  [
+    "carton_height",
+    [
+      "Carton Height"
+    ]
+  ],
+  [
+    "carton_height_in_b1",
+    [
+      "Carton Height in Inches Box1",
+      "Carton Height in Inches (Box 1)"
+    ]
+  ],
+  [
+    "carton_height_in_b2",
+    [
+      "Carton Height in Inches Box2",
+      "Carton Height in Inches (Box 2)"
+    ]
+  ],
+  [
+    "carton_height_in_b3",
+    [
+      "Carton Height in Inches Box3",
+      "Carton Height in Inches (Box 3)"
+    ]
+  ],
+  [
+    "carton_height_in_b4",
+    [
+      "Carton Height in Inches Box4",
+      "Carton Height in Inches (Box 4)"
+    ]
+  ],
+  [
+    "carton_length",
+    [
+      "Carton Length in Inches"
+    ]
+  ],
+  [
+    "carton_length_in_b1",
+    [
+      "Carton Length in Inches Box1",
+      "Carton Length in Inches (Box 1)"
+    ]
+  ],
+  [
+    "carton_length_in_b2",
+    [
+      "Carton Length in Inches Box2",
+      "Carton Length in Inches (Box 2)"
+    ]
+  ],
+  [
+    "carton_length_in_b3",
+    [
+      "Carton Length in Inches Box3",
+      "Carton Length in Inches (Box 3)"
+    ]
+  ],
+  [
+    "carton_length_in_b4",
+    [
+      "Carton Length in Inches Box4",
+      "Carton Length in Inches (Box 4)"
+    ]
+  ],
+  [
+    "carton_width",
+    [
+      "Carton Width"
+    ]
+  ],
+  [
+    "carton_width_in_b1",
+    [
+      "Carton Width in Inches Box1",
+      "Carton Width in Inches (Box 1)"
+    ]
+  ],
+  [
+    "carton_width_in_b2",
+    [
+      "Carton Width in Inches Box2",
+      "Carton Width in Inches (Box 2)"
+    ]
+  ],
+  [
+    "carton_width_in_b3",
+    [
+      "Carton Width in Inches Box3",
+      "Carton Width in Inches (Box 3)"
+    ]
+  ],
+  [
+    "carton_width_in_b4",
+    [
+      "Carton Width in Inches Box4",
+      "Carton Width in Inches (Box 4)"
+    ]
+  ],
+  [
+    "carton_witdh_I",
+    [
+      "Carton Width in Inches"
+    ]
+  ],
+  [
+    "carton_with_in_b1",
+    [
+      "Carton Width in Inches Box1"
+    ]
+  ],
+  [
+    "carton_with_in_b2",
+    [
+      "Carton Width in Inches Box2"
+    ]
+  ],
+  [
+    "categories_details",
+    [
+      "Categories Details"
+    ]
+  ],
+  [
+    "category_ids",
+    [
+      "Categories"
+    ]
+  ],
+  [
+    "chain_length",
+    [
+      "Chain Length"
+    ]
+  ],
+  [
+    "chain_metal",
+    [
+      "Chain Metal"
+    ]
+  ],
+  [
+    "chain_type",
+    [
+      "Chain Type"
+    ]
+  ],
+  [
+    "chain_width",
+    [
+      "Chain Width"
+    ]
+  ],
+  [
+    "clasp",
+    [
+      "Clasp"
+    ]
+  ],
+  [
+    "clearance_facet",
+    [
+      "Clearance Facet"
+    ]
+  ],
+  [
+    "closeout_price",
+    [
+      "Closeout Price"
+    ]
+  ],
+  [
+    "closeout_unit_price",
+    [
+      "Closeout Unit Price"
+    ]
+  ],
+  [
+    "collection_copy",
+    [
+      "Collection Copy"
+    ]
+  ],
+  [
+    "collection_facet",
+    [
+      "Collection Type"
+    ]
+  ],
+  [
+    "collection_name",
+    [
+      "Collection Name"
+    ]
+  ],
+  [
+    "color",
+    [
+      "color",
+      "Color"
+    ]
+  ],
+  [
+    "color_facet",
+    [
+      "Color"
+    ]
+  ],
+  [
+    "shape",
+    [
+      "shape"
+    ]
+  ],
+  [
+    "construction",
+    [
+      "Construction"
+    ]
+  ],
+  [
+    "construction_facet",
+    [
+      "Construction"
+    ]
+  ],
+  [
+    "cost",
+    [
+      "Cost",
+      "Total Cost"
+    ]
+  ],
+  [
+    "cost_price",
+    [
+      "Cost Price"
+    ]
+  ],
+  [
+    "country",
+    [
+      "Country Of Origin"
+    ]
+  ],
+  [
+    "country_facet",
+    [
+      "Country of Origin"
+    ]
+  ],
+  [
+    "country_of_manufacture",
+    [
+      "Country of Manufacture"
+    ]
+  ],
+  [
+    "custom_design",
+    [
+      "New Theme"
+    ]
+  ],
+  [
+    "custom_design_from",
+    [
+      "Active From"
+    ]
+  ],
+  [
+    "custom_design_to",
+    [
+      "Active To"
+    ]
+  ],
+  [
+    "custom_layout",
+    [
+      "New Layout"
+    ]
+  ],
+  [
+    "custom_layout_update_file",
+    [
+      "Custom Layout Update"
+    ]
+  ],
+  [
+    "custom_sizes",
+    [
+      "Size"
+    ]
+  ],
+  [
+    "deal",
+    [
+      "deal"
+    ]
+  ],
+  [
+    "deal_from_date",
+    [
+      "Deal Start Date"
+    ]
+  ],
+  [
+    "deal_to_date",
+    [
+      "Deal End Date"
+    ]
+  ],
+  [
+    "delivery_type",
+    [
+      "delivery type",
+      "Delivery Type"
+    ]
+  ],
+  [
+    "description",
+    [
+      "Description",
+      "Body Copy of Description"
+    ]
+  ],
+  [
+    "diameter",
+    [
+      "Diameter"
+    ]
+  ],
+  [
+    "dimension",
+    [
+      "Dimension"
+    ]
+  ],
+  [
+    "dimensional_weight",
+    [
+      "Dimensional Weight"
+    ]
+  ],
+  [
+    "drop_ship_available",
+    [
+      "Drop Ship Available"
+    ]
+  ],
+  [
+    "drop_ship_lead",
+    [
+      "Drop Ship Lead"
+    ]
+  ],
+  [
+    "eta",
+    [
+      "ETA"
+    ]
+  ],
+  [
+    "ext_stock_no",
+    [
+      "Stock No."
+    ]
+  ],
+  [
+    "feature_1",
+    [
+      "Feature 1",
+      "Feature #1"
+    ]
+  ],
+  [
+    "feature_2",
+    [
+      "Feature 2",
+      "Feature #2"
+    ]
+  ],
+  [
+    "feature_3",
+    [
+      "Feature 3",
+      "Feature #3"
+    ]
+  ],
+  [
+    "feature_4",
+    [
+      "Feature 4",
+      "Feature #4"
+    ]
+  ],
+  [
+    "feature_5",
+    [
+      "Feature 5",
+      "Feature #5"
+    ]
+  ],
+  [
+    "feature_6",
+    [
+      "Feature 6",
+      "Feature #6"
+    ]
+  ],
+  [
+    "feature_7",
+    [
+      "Feature 7",
+      "Feature #7"
+    ]
+  ],
+  [
+    "feature_8",
+    [
+      "Feature 8",
+      "Feature #8"
+    ]
+  ],
+  [
+    "finish",
+    [
+      "Finish"
+    ]
+  ],
+  [
+    "first_class_shipping_cost",
+    [
+      "First Class Shipping Cost"
+    ]
+  ],
+  [
+    "first_class_shipping_title",
+    [
+      "First Class Shipping Title"
+    ]
+  ],
+  [
+    "fit",
+    [
+      "Fit"
+    ]
+  ],
+  [
+    "flexshopper_leasing_enabled",
+    [
+      "FlexShopper Leasing Enabled"
+    ]
+  ],
+  [
+    "flooring_type",
+    [
+      "Flooring Type"
+    ]
+  ],
+  [
+    "freight_prices_1",
+    [
+      "Freight Prices 1"
+    ]
+  ],
+  [
+    "freight_prices_2",
+    [
+      "Freight Prices 2"
+    ]
+  ],
+  [
+    "gallery",
+    [
+      "Image Gallery"
+    ]
+  ],
+  [
+    "gallery_images",
+    [
+      "Room Scene",
+      "Image 2",
+      "Image 3",
+      "Image 4",
+      "Image 5",
+      "Image 6",
+      "Image 7",
+      "Image 8",
+      "Image 9",
+      "Image 10",
+      "Image 11",
+      "Image 12",
+      "Image 13",
+      "Image 14",
+      "Image 15",
+      "Image 16",
+      "Image 17",
+      "Image 18",
+      "Image 19",
+      "Image 20"
+    ]
+  ],
+  [
+    "gender",
+    [
+      "Gender"
+    ]
+  ],
+  [
+    "giftcard_amounts",
+    [
+      "Amount"
+    ]
+  ],
+  [
+    "giftcard_type",
+    [
+      "Card Type"
+    ]
+  ],
+  [
+    "gift_message_available",
+    [
+      "Allow Gift Message"
+    ]
+  ],
+  [
+    "gift_wrapping_available",
+    [
+      "Allow Gift Wrapping"
+    ]
+  ],
+  [
+    "gift_wrapping_price",
+    [
+      "Price for Gift Wrapping"
+    ]
+  ],
+  [
+    "gm",
+    [
+      "GM %"
+    ]
+  ],
+  [
+    "goodpads",
+    [
+      "Good 5-Year Warranty"
+    ]
+  ],
+  [
+    "heart_height",
+    [
+      "Heart Height"
+    ]
+  ],
+  [
+    "heart_width",
+    [
+      "Heart Width"
+    ]
+  ],
+  [
+    "highlights",
+    [
+      "Highlights"
+    ]
+  ],
+  [
+    "hover_image",
+    [
+      "Hover Image"
+    ]
+  ],
+  [
+    "image",
+    [
+      "Base"
+    ]
+  ],
+  [
+    "is_returnable",
+    [
+      "Enable RMA"
+    ]
+  ],
+  [
+    "items_misc_friendly_dimensions",
+    [
+      "Product Dimensions (Fully Assembled)"
+    ]
+  ],
+  [
+    "items_misc_supp_weight",
+    [
+      "Actual Product Weight (Fully Assembled)"
+    ]
+  ],
+  [
+    "items_misc_unit_total_weight",
+    [
+      "Total Shipping Weight in lbs"
+    ]
+  ],
+  [
+    "items_misc_unit_weight",
+    [
+      "Total Shipping Weight in lbs",
+      "Product Shipment Weight (lbs)"
+    ]
+  ],
+  [
+    "items_product_depth",
+    [
+      "Items Product Depth"
+    ]
+  ],
+  [
+    "items_product_height",
+    [
+      "Items Product Height"
+    ]
+  ],
+  [
+    "items_product_width",
+    [
+      "Items Product Width"
+    ]
+  ],
+  [
+    "items_seats",
+    [
+      "Items Seats"
+    ]
+  ],
+  [
+    "item_depth",
+    [
+      "Item Depth"
+    ]
+  ],
+  [
+    "item_freight_class",
+    [
+      "Item Freight Class"
+    ]
+  ],
+  [
+    "item_height",
+    [
+      "Item Height"
+    ]
+  ],
+  [
+    "item_ship_depth",
+    [
+      "Item Ship Depth (in)"
+    ]
+  ],
+  [
+    "item_ship_height",
+    [
+      "Item Ship Height (in)"
+    ]
+  ],
+  [
+    "item_ship_width",
+    [
+      "Item Ship Width (in)"
+    ]
+  ],
+  [
+    "item_weight",
+    [
+      "Item Weight"
+    ]
+  ],
+  [
+    "item_width",
+    [
+      "Item Width"
+    ]
+  ],
+  [
+    "jewelery_color_facet",
+    [
+      "Color"
+    ]
+  ],
+  [
+    "jewelry_sizes",
+    [
+      "Jewelry Sizes"
+    ]
+  ],
+  [
+    "kind_of_assembly",
+    [
+      "Kind of Assembly"
+    ]
+  ],
+  [
+    "lab_created",
+    [
+      "Lab Created"
+    ]
+  ],
+  [
+    "layer_spaces",
+    [
+      "Layer Spaces"
+    ]
+  ],
+  [
+    "length",
+    [
+      "Length"
+    ]
+  ],
+  [
+    "location_facet",
+    [
+      "Recommended Use"
+    ]
+  ],
+  [
+    "luster",
+    [
+      "Luster"
+    ]
+  ],
+  [
+    "manufacturer",
+    [
+      "Manufacturer"
+    ]
+  ],
+  [
+    "map_pad_shape",
+    [
+      "Map Pad Shape"
+    ]
+  ],
+  [
+    "map_pad_size",
+    [
+      "Map Pad Size"
+    ]
+  ],
+  [
+    "margin",
+    [
+      "Margin"
+    ]
+  ],
+  [
+    "master_carton_qty",
+    [
+      "Master Carton qty"
+    ]
+  ],
+  [
+    "material_facet",
+    [
+      "Material"
+    ]
+  ],
+  [
+    "material",
+    [
+      "material"
+    ]
+  ],
+  [
+    "mattress_size",
+    [
+      "Mattress Size",
+      "mattress_size"
+    ]
+  ],
+  [
+    "mattress_support",
+    [
+      "Mattress Support",
+      "mattress_support"
+    ]
+  ],
+  [
+    "mattress_type",
+    [
+      "mattres Type",
+      "mattress_type"
+    ]
+  ],
+  [
+    "media_gallery",
+    [
+      "Media Gallery"
+    ]
+  ],
+  [
+    "metal_content",
+    [
+      "Metal Content"
+    ]
+  ],
+  [
+    "meta_description",
+    [
+      "Meta Description"
+    ]
+  ],
+  [
+    "meta_keyword",
+    [
+      "Meta Keywords"
+    ]
+  ],
+  [
+    "meta_title",
+    [
+      "Meta Title"
+    ]
+  ],
+  [
+    "minimum_clarity",
+    [
+      "Minimum Clarity"
+    ]
+  ],
+  [
+    "minimum_color",
+    [
+      "Minimum Color"
+    ]
+  ],
+  [
+    "min_ct_tw",
+    [
+      "Min CT TW"
+    ]
+  ],
+  [
+    "min_size",
+    [
+      "Min Size"
+    ]
+  ],
+  [
+    "msrp",
+    [
+      "Minimum Advertised Price"
+    ]
+  ],
+  [
+    "msrp_display_actual_price_type",
+    [
+      "Display Actual Price"
+    ]
+  ],
+  [
+    "msrp_unit_price",
+    [
+      "Msrp Unit Price"
+    ]
+  ],
+  [
+    "multiple_cartons",
+    [
+      "Multiple Cartons"
+    ]
+  ],
+  [
+    "m_seo_canonical",
+    [
+      "Canonical URL"
+    ]
+  ],
+  [
+    "nacre",
+    [
+      "Nacre"
+    ]
+  ],
+  [
+    "name",
+    [
+      "Short Titles",
+      "Product Name"
+    ]
+  ],
+  [
+    "news_from_date",
+    [
+      "Set Product as New from Date"
+    ]
+  ],
+  [
+    "news_to_date",
+    [
+      "Set Product as New to Date"
+    ]
+  ],
+  [
+    "number_boxes",
+    [
+      "Number of Boxes"
+    ]
+  ],
+  [
+    "number_of_diamonds",
+    [
+      "Number of Diamonds"
+    ]
+  ],
+  [
+    "number_of_emeralds",
+    [
+      "Number of Emeralds"
+    ]
+  ],
+  [
+    "number_of_pearls",
+    [
+      "Number of Pearls"
+    ]
+  ],
+  [
+    "number_of_round_diamonds",
+    [
+      "Number of Round Diamonds"
+    ]
+  ],
+  [
+    "number_of_rubies",
+    [
+      "Number of Rubies"
+    ]
+  ],
+  [
+    "number_of_sapphires",
+    [
+      "Number of Sapphires"
+    ]
+  ],
+  [
+    "number_of_stones",
+    [
+      "Number of Stones"
+    ]
+  ],
+  [
+    "open_amount_max",
+    [
+      "Open Amount To"
+    ]
+  ],
+  [
+    "open_amount_min",
+    [
+      "Open Amount From"
+    ]
+  ],
+  [
+    "options_container",
+    [
+      "Display Product Options In"
+    ]
+  ],
+  [
+    "origin",
+    [
+      "Origin"
+    ]
+  ],
+  [
+    "outdoorpads",
+    [
+      "Outdoor Pad"
+    ]
+  ],
+  [
+    "oversized",
+    [
+      "Oversized"
+    ]
+  ],
+  [
+    "page_layout",
+    [
+      "Layout"
+    ]
+  ],
+  [
+    "pattern",
+    [
+      "Pattern"
+    ]
+  ],
+  [
+    "pattern_facet",
+    [
+      "Pattern"
+    ]
+  ],
+  [
+    "pearl_quality",
+    [
+      "Pearl Quality"
+    ]
+  ],
+  [
+    "pearl_size",
+    [
+      "Pearl Size"
+    ]
+  ],
+  [
+    "pearl_type",
+    [
+      "Pearl Type"
+    ]
+  ],
+  [
+    "price",
+    [
+      "Price"
+    ]
+  ],
+  [
+    "price_facet",
+    [
+      "Price"
+    ]
+  ],
+  [
+    "price_type",
+    [
+      "Dynamic Price"
+    ]
+  ],
+  [
+    "price_view",
+    [
+      "Price View"
+    ]
+  ],
+  [
+    "priority_shipping_cost",
+    [
+      "Priority Shipping Cost"
+    ]
+  ],
+  [
+    "priority_shipping_title",
+    [
+      "Priority Shipping Title"
+    ]
+  ],
+  [
+    "product_cost",
+    [
+      "Product Cost"
+    ]
+  ],
+  [
+    "product_retail",
+    [
+      "Product Retail"
+    ]
+  ],
+  [
+    "quantity_and_stock_status",
+    [
+      "Quantity"
+    ]
+  ],
+  [
+    "retail",
+    [
+      "Retail"
+    ]
+  ],
+  [
+    "retail_price",
+    [
+      "Retail Price"
+    ]
+  ],
+  [
+    "returns_accepted",
+    [
+      "Returns Accepted"
+    ]
+  ],
+  [
+    "rhodium_polish",
+    [
+      "Rhodium Polish"
+    ]
+  ],
+  [
+    "room",
+    [
+      "Room"
+    ]
+  ],
+  [
+    "sales_facet",
+    [
+      "Sales facet"
+    ]
+  ],
+  [
+    "secondary_material_facet",
+    [
+      "Secondary Material"
+    ]
+  ],
+  [
+    "setting_type",
+    [
+      "Setting Type"
+    ]
+  ],
+  [
+    "shape_facet",
+    [
+      "Shape"
+    ]
+  ],
+  [
+    "shipment_type",
+    [
+      "Ship Bundle Items"
+    ]
+  ],
+  [
+    "shipping",
+    [
+      "Shipping Cost",
+      "Shipping"
+    ]
+  ],
+  [
+    "shipping_fee",
+    [
+      "Shipping Fee"
+    ]
+  ],
+  [
+    "shipping_price",
+    [
+      "FlexShopper Shipping Price",
+      "Shipping Price"
+    ]
+  ],
+  [
+    "shipping_restriction",
+    [
+      "Shipping Restriction"
+    ]
+  ],
+  [
+    "shipping_time",
+    [
+      "Shipping Time"
+    ]
+  ],
+  [
+    "shipping_weight",
+    [
+      "Shipping Weight"
+    ]
+  ],
+  [
+    "shipping_weight_Lb",
+    [
+      "Shipping Weight in Lbs"
+    ]
+  ],
+  [
+    "shipping_weight_lbs_b1",
+    [
+      "Shipping Weight in Lbs Box1",
+      "Shipping Weight in Lbs (Box1)"
+    ]
+  ],
+  [
+    "shipping_weight_lbs_b2",
+    [
+      "Shipping Weight in Lbs Box2",
+      "Shipping Weight in Lbs (Box 2)"
+    ]
+  ],
+  [
+    "shipping_weight_lbs_b3",
+    [
+      "Shipping Weight in Lbs Box3",
+      "Shipping Weight in Lbs (Box 3)"
+    ]
+  ],
+  [
+    "shipping_weight_lbs_b4",
+    [
+      "Shipping Weight in Lbs Box4",
+      "Shipping Weight in Lbs (Box 4)"
+    ]
+  ],
+  [
+    "shipping_zip",
+    [
+      "Shipping Zip"
+    ]
+  ],
+  [
+    "ship_by",
+    [
+      "Ship By"
+    ]
+  ],
+  [
+    "short_description",
+    [
+      "Short Description"
+    ]
+  ],
+  [
+    "size",
+    [
+      "Size",
+      "size"
+    ]
+  ],
+  [
+    "size_facet",
+    [
+      "Size"
+    ]
+  ],
+  [
+    "size_range",
+    [
+      "Size Range"
+    ]
+  ],
+  [
+    "sku",
+    [
+      "Manufacturer Model Number / SKU",
+      "SKU"
+    ]
+  ],
+  [
+    "sku_type",
+    [
+      "Dynamic SKU"
+    ]
+  ],
+  [
+    "small_image",
+    [
+      "Small"
+    ]
+  ],
+  [
+    "small_parcel_y_n",
+    [
+      "Small Parcel"
+    ]
+  ],
+  [
+    "special_from_date",
+    [
+      "Special Price From Date"
+    ]
+  ],
+  [
+    "special_price",
+    [
+      "Special Price"
+    ]
+  ],
+  [
+    "special_to_date",
+    [
+      "Special Price To Date"
+    ]
+  ],
+  [
+    "status",
+    [
+      "Enable Product"
+    ]
+  ],
+  [
+    "stone_creation_method",
+    [
+      "Stone Creation Method"
+    ]
+  ],
+  [
+    "stone_facet",
+    [
+      "Stone"
+    ]
+  ],
+  [
+    "stone_treatment_method",
+    [
+      "Stone Treatment Method"
+    ]
+  ],
+  [
+    "stone_type",
+    [
+      "Stone Type"
+    ]
+  ],
+  [
+    "stringing",
+    [
+      "Stringing"
+    ]
+  ],
+  [
+    "style",
+    [
+      "Style"
+    ]
+  ],
+  [
+    "style_facet",
+    [
+      "Style"
+    ]
+  ],
+  [
+    "style_name",
+    [
+      "Style"
+    ]
+  ],
+  [
+    "surface_marking",
+    [
+      "Surface Marking"
+    ]
+  ],
+  [
+    "swatch",
+    [
+      "Swatch",
+      "Image",
+      "Image 1"
+    ]
+  ],
+  [
+    "swatch_image",
+    [
+      "Swatch"
+    ]
+  ],
+  [
+    "tax_class_id",
+    [
+      "Tax Class"
+    ]
+  ],
+  [
+    "theread_count",
+    [
+      "theread count"
+    ]
+  ],
+  [
+    "thumbnail",
+    [
+      "Thumbnail"
+    ]
+  ],
+  [
+    "tier_facet",
+    [
+      "Tier"
+    ]
+  ],
+  [
+    "tier_price",
+    [
+      "Tier Price"
+    ]
+  ],
+  [
+    "tj_ptc",
+    [
+      "TaxJar Category"
+    ]
+  ],
+  [
+    "tone",
+    [
+      "Tone"
+    ]
+  ],
+  [
+    "top_seller",
+    [
+      "Top Seller"
+    ]
+  ],
+  [
+    "total_price",
+    [
+      "Total Price"
+    ]
+  ],
+  [
+    "type",
+    [
+      "Type"
+    ]
+  ],
+  [
+    "type_facet",
+    [
+      "Type"
+    ]
+  ],
+  [
+    "uniformity",
+    [
+      "Uniformity"
+    ]
+  ],
+  [
+    "units",
+    [
+      "units"
+    ]
+  ],
+  [
+    "upc",
+    [
+      "UPC",
+      "GTIN-12 Digit (U.P.C.)"
+    ]
+  ],
+  [
+    "upc_type",
+    [
+      "UPC"
+    ]
+  ],
+  [
+    "url_key",
+    [
+      "URL Key"
+    ]
+  ],
+  [
+    "vendor",
+    [
+      "vendor"
+    ]
+  ],
+  [
+    "vendor_facet",
+    [
+      "Vendor"
+    ]
+  ],
+  [
+    "vendor_model_name",
+    [
+      "Vendor Model Name"
+    ]
+  ],
+  [
+    "vendor_model_number",
+    [
+      "Vendor Model Number"
+    ]
+  ],
+  [
+    "vendor_name",
+    [
+      "Vendor"
+    ]
+  ],
+  [
+    "video_ids",
+    [
+      "Video Ids"
+    ]
+  ],
+  [
+    "video_url",
+    [
+      "Video"
+    ]
+  ],
+  [
+    "visibility",
+    [
+      "Visibility"
+    ]
+  ],
+  [
+    "warranty",
+    [
+      "Warranty"
+    ]
+  ],
+  [
+    "warranty_details",
+    [
+      "warranty_details",
+      "Warranty Details"
+    ]
+  ],
+  [
+    "warranty_phone_number",
+    [
+      "warranty_phone_number",
+      "Warranty Phone Number"
+    ]
+  ],
+  [
+    "warranty_email_address",
+    [
+      "warranty_email_address",
+      "warrantyemail address",
+      "Warranty Email Address"
+    ]
+  ],
+  [
+    "warranty_text",
+    [
+      "Warranty Text"
+    ]
+  ],
+  [
+    "warranty_type",
+    [
+      "Warranty"
+    ]
+  ],
+  [
+    "weight",
+    [
+      "Weight"
+    ]
+  ],
+  [
+    "weight_type",
+    [
+      "Dynamic Weight"
+    ]
+  ],
+  [
+    "width",
+    [
+      "Width"
+    ]
+  ],
+  [
+    "layer_specs",
+    [
+      "Layer Specs"
+    ]
+  ],
+  [
+    "thread_count",
+    [
+      "thread_count"
+    ]
+  ],
+  [
+    "qty",
+    [
+      "Inventory/Quantity - Do not show if less than X in website",
+      "Inventory/Quanitity - Do not show if less than X in website"
+    ]
+  ],
+  [
+    "suggested_product_retail",
+    [
+      "Suggested Product Retail"
+    ]
+  ]
+]

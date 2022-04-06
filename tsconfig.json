@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "sourceMap": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "baseUrl": "./",
+    "paths": {
+      "~/icons/*": ["src/assets/icons/*"],
+      "~/theme/*": ["src/core/theme/*"],
+      "~/styles/*": ["src/core/styles/*"],
+      "~/stores/*": ["src/core/stores/*"],
+      "~/errors/*": ["src/core/errors/*"],
+      "~/shared/*": ["src/core/shared/*"],
+      "~/helpers/*": ["src/core/helpers/*"],
+      "~/common/*": ["src/view/common/*"],
+      "~/logic/*": ["src/logic/*"],
+      "~router/*": ["src/router/*"],
+      "@mui/styled-engine": ["./node_modules/@mui/styled-engine-sc"]
+    }
+  },
+  "include": ["src"]
+}
