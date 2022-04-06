@@ -14,14 +14,14 @@ const sx: SxProps = {
   width: '100%',
   height: '100%',
   '& .ag-header-cell': {
-    '& .ag-header-cell-text': { color: '#b1b1b1' },
+    // '& .ag-header-cell-text': { color: '#b1b1b1' },
     borderRight: `1px solid var(--ag-border-color, #68686e)`
   },
   '&.ag-theme-alpine-dark': {
     '& .ag-cell': {
       borderRightColor: `var(--ag-border-color, #68686e)`
     },
-    '& .ag-row': {
+    '& .ag-row, & .ag-rich-select-value, & .ag-rich-select-row, & .ag-header-cell-text': {
       color: `#b1b1b1`
     }
   }
