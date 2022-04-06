@@ -11,3 +11,8 @@
 
 - yarn build or npm run build
 - serve -s build (if *serve* is not recognized run **npm -g i serve**)
+
+#### Commits
+
+- yarn commit or npm run commit
+- follow steps
