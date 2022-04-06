@@ -5,7 +5,7 @@ import { ContextImportStore } from '../contexts/ContextImportStore';
 function Export() {
   const { onExport } = useContext(ContextImportStore);
   return (
-    <Button variant="outlined" component="span" onClick={onExport} color="secondary">
+    <Button variant="outlined" onClick={onExport} color="secondary">
       Export
     </Button>
   );

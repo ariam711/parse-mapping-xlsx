@@ -4,11 +4,14 @@ import { action, makeObservable, observable } from 'mobx';
 import * as XLSX from 'xlsx';
 import { Range, Sheet, WorkBook } from 'xlsx';
 import { clone } from '../../../utils/clone';
+import { AttributeSetType } from '../components/configuration/attributeSetCode/AttributeSet';
+import { ProductTypesType } from '../components/configuration/productType/ProductTypes';
+import { VendorFacetType } from '../components/configuration/vendorFacet/VendorsFacet';
 import { BaseMapType } from '../types/BaseMapType';
 import { generateUrlKey } from './utils/generateUrlKey';
 import { normalizeImageUrl } from './utils/normalizeImageUrl';
 
-const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates'];
+const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates', 'Comments'];
 
 export class ImportStore {
   // region ATTRIBUTES
@@ -18,26 +21,45 @@ export class ImportStore {
   data: any = {};
   indexMapping = new Map<string, string>();
   // region GRID
-
   gridApi: GridApi = {} as GridApi;
   columnApi: ColumnApi = {} as ColumnApi;
-
   baseMap: BaseMapType = [];
+  // endregion
+  // region ADITIONAL ROWS
+
+  productType: ProductTypesType = 'simple';
+  attributeSet: AttributeSetType = 'Default';
+  vendorFacet: VendorFacetType = 'Linon';
 
   // endregion
-
   // endregion
 
   constructor() {
     makeObservable<ImportStore>(this, {
       optionsToMap: observable,
+      productType: observable,
+      attributeSet: observable,
+      vendorFacet: observable,
 
-      setOptionsToMap: action
+      setOptionsToMap: action,
+      setProductType: action,
+      setAttributeSet: action,
+      setVendorFacet: action
     });
     this.init();
   }
 
   // region SETTERS
+  setVendorFacet = (value: VendorFacetType = 'Linon') => {
+    this.vendorFacet = value;
+  };
+  setProductType = (value: ProductTypesType = 'simple') => {
+    this.productType = value;
+  };
+  setAttributeSet = (value: AttributeSetType = 'Default') => {
+    this.attributeSet = value;
+  };
+
   get getOptions() {
     return clone(this.optionsToMap);
   }
@@ -165,12 +187,19 @@ export class ImportStore {
     const dataLength = data.length;
     let i = 0;
 
+    const baseRow = {
+      product_type: this.productType,
+      attribute_set_code: this.attributeSet,
+      vendor_facet: this.vendorFacet,
+      flexshopper_leasing_enabled: 1
+    };
+
     while (i < dataLength) {
       const entries = Object.entries(data[i++]);
       const entriesLength = entries.length;
       if (entriesLength === 1) continue;
       let j = 0;
-      const tmp: any = {};
+      const tmp: any = { ...baseRow };
       while (j < entriesLength) {
         // eslint-disable-next-line prefer-const
         let [key, value] = entries[j++];
@@ -196,6 +225,10 @@ export class ImportStore {
               tmp[mapped] = value;
               break;
             }
+            case 'upc': {
+              tmp[mapped] = String(value);
+              break;
+            }
             default: {
               tmp[mapped] = value;
             }
@@ -204,6 +237,9 @@ export class ImportStore {
       }
       if (tmp['gallery_images']) {
         tmp['gallery_images'] = tmp['gallery_images'].join(',');
+      }
+      if (!tmp['price']) {
+        tmp['price'] = tmp['total_price'] || tmp['cost'] || 0;
       }
       newBook.push(tmp);
     }

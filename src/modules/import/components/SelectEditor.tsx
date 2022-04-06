@@ -15,13 +15,11 @@ const SelectEditor = forwardRef(function SelectEditor(props: SelectForwardProps,
   const [newValue, setNewValue] = useState<any>(null);
   useImperativeHandle(
     ref,
-    () => {
-      return {
-        getValue() {
-          return newValue?.map || '';
-        }
-      };
-    },
+    () => ({
+      getValue() {
+        return newValue?.map || '';
+      }
+    }),
     [newValue]
   );
 

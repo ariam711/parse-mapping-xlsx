@@ -23,8 +23,8 @@ function Upload({ onChange, id = 'f10-btn-file-upload', disabled }: FldUploadIma
           onClick={(e: any) => e.stopPropagation()}
         />
       )}
-      <Button variant="outlined" component="span">
-        Choose Files
+      <Button variant="outlined" component="span" sx={{ '&': { minHeight: '40px' } }}>
+        Choose File
       </Button>
     </label>
   );

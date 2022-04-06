@@ -1,5 +1,6 @@
 import { Box, SxProps } from '@mui/material';
 import React, { useContext } from 'react';
+import Configuration from './components/configuration';
 import Export from './components/Export';
 import Sheet from './components/Sheet';
 import Upload from './components/Upload';
@@ -36,8 +37,9 @@ function Import() {
 
   return (
     <Box sx={sx}>
-      <Box>
+      <Box sx={{ '&': { display: 'flex', justifyContent: 'space-between' } }}>
         <Upload onChange={onChange} />
+        <Configuration />
         <Export />
       </Box>
       <Sheet />
