@@ -229,6 +229,10 @@ export class ImportStore {
               tmp[mapped] = String(value);
               break;
             }
+            case 'categories': {
+              tmp[mapped] = String(value).replace(/>/gi, '/');
+              break;
+            }
             default: {
               tmp[mapped] = value;
             }
