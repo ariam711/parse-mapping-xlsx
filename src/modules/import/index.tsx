@@ -25,15 +25,7 @@ function Import() {
 
   function onChange(event: any) {
     const file = event.currentTarget['files'][0];
-    // console.log(`fileNAME: ${JSON.stringify(file.name)}`);
     !!file && processImportedFile(file);
-    // setText(file.name);
-    /*store.processImportedFile(file, () => {
-      setTimeout(() => {
-        store.updateStep(1);
-        mainStore.setLoading(false);
-      }, 500);
-    });*/
   }
 
   return (

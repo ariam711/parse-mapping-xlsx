@@ -8,8 +8,6 @@ import React, { useContext, useMemo } from 'react';
 import { ContextImportStore } from '../contexts/ContextImportStore';
 import cellEditor from './SelectEditor';
 
-// const ColumnsDefs: ColDef[] = [{ field: 'head' }, { field: 'map', editable: true, cellEditor }];
-
 const sx: SxProps = {
   width: '100%',
   height: '100%',
@@ -59,7 +57,6 @@ const Sheet = () => {
         suppressMovableColumns
         suppressDragLeaveHidesColumns
         frameworkComponents={[cellEditor]}
-        // onBodyScroll={() => store.columnApi.autoSizeAllColumns()}
       />
     </Box>
   );

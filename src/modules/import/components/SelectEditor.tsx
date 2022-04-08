@@ -11,7 +11,6 @@ export type FldUploadImageProps = {
 type SelectForwardProps = PropsWithChildren<Record<string, never>> & { value: string; options: OptionType[] };
 
 const SelectEditor = forwardRef(function SelectEditor(props: SelectForwardProps, ref) {
-  // const s = useContext(ContextImportStore);
   const [newValue, setNewValue] = useState<any>(null);
   useImperativeHandle(
     ref,
@@ -29,7 +28,7 @@ const SelectEditor = forwardRef(function SelectEditor(props: SelectForwardProps,
 
   return (
     <Autocomplete
-      id="free-solo-demo"
+      id="mapping-column-editor-id"
       freeSolo
       fullWidth
       openOnFocus
