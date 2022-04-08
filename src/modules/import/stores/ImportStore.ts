@@ -187,6 +187,8 @@ export class ImportStore {
     const dataLength = data.length;
     let i = 0;
 
+    const categories = new Set();
+
     const baseRow = {
       product_type: this.productType,
       attribute_set_code: this.attributeSet,
@@ -226,11 +228,14 @@ export class ImportStore {
               break;
             }
             case 'upc': {
-              tmp[mapped] = String(value);
+              tmp[mapped] = JSON.stringify(Number(value));
               break;
             }
             case 'categories': {
-              tmp[mapped] = String(value).replace(/>/gi, '/');
+              tmp[mapped] = `Default Category/${String(value)
+                .trim()
+                .replace(/\s*[>/]\s*/gi, '/')}`.replace(/\s+/gi, ' ');
+              categories.add(tmp[mapped]);
               break;
             }
             default: {
@@ -248,6 +253,7 @@ export class ImportStore {
       newBook.push(tmp);
     }
 
+    console.log(`CATEGORIES: ${JSON.stringify(Array.from(categories), null, 2)}`);
     const wb = XLSX.utils.book_new();
     wb.SheetNames.push(this.sheets[0]);
     wb.Sheets[this.sheets[0]] = XLSX.utils.json_to_sheet(newBook);

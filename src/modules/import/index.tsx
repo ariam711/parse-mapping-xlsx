@@ -13,9 +13,10 @@ const sx: SxProps = {
   '&': {
     display: 'grid',
     gridTemplateColumns: '1fr',
-    gridTemplateRows: 'auto 1fr auto',
-    height: '100vh',
-    rowGap: '10px'
+    gridTemplateRows: 'auto 1fr',
+    height: `${window.innerHeight}px`,
+    rowGap: '20px',
+    p: '20px 5px 5px'
   }
 };
 

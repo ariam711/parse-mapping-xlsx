@@ -1,4 +1,4 @@
-import { Box, createTheme, ThemeProvider } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material';
 import React, { memo } from 'react';
 import Import from './modules/import';
 
@@ -11,14 +11,7 @@ const darkTheme = createTheme({
 function App(): JSX.Element {
   return (
     <ThemeProvider theme={darkTheme}>
-      <Box
-        sx={{
-          bgcolor: 'background.default',
-          color: 'text.primary',
-          p: '10px'
-        }}>
-        <Import />
-      </Box>
+      <Import />
     </ThemeProvider>
   );
 }
