@@ -10,6 +10,7 @@ import { VendorFacetType } from '../components/configuration/vendorFacet/Vendors
 import { BaseMapType } from '../types/BaseMapType';
 import { generateUrlKey } from './utils/generateUrlKey';
 import { normalizeImageUrl } from './utils/normalizeImageUrl';
+import { parseArrayToString } from './utils/parseArrayToString';
 
 const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates', 'Comments'];
 
@@ -193,7 +194,10 @@ export class ImportStore {
       product_type: this.productType,
       attribute_set_code: this.attributeSet,
       vendor_facet: this.vendorFacet,
-      flexshopper_leasing_enabled: 1
+      flexshopper_leasing_enabled: 1,
+      website_id: 0,
+      is_in_stock: 1,
+      product_websites: 'base'
     };
 
     while (i < dataLength) {
@@ -208,12 +212,13 @@ export class ImportStore {
         const mapped = this.indexMapping.get(key);
         if (mapped) {
           switch (mapped) {
+            case 'video_url':
             case 'gallery_images': {
               if (value) {
-                if (!tmp['gallery_images']) {
-                  tmp['gallery_images'] = [];
+                if (!tmp[mapped]) {
+                  tmp[mapped] = [];
                 }
-                tmp['gallery_images'].push(normalizeImageUrl(String(value)));
+                tmp[mapped].push(normalizeImageUrl(String(value)));
               }
               break;
             }
@@ -244,9 +249,9 @@ export class ImportStore {
           }
         } else console.warn(`Header "${key}" has no mapping value`);
       }
-      if (tmp['gallery_images']) {
-        tmp['gallery_images'] = tmp['gallery_images'].join(',');
-      }
+
+      parseArrayToString(tmp, 'gallery_images');
+      parseArrayToString(tmp, 'video_url');
       if (!tmp['price']) {
         tmp['price'] = tmp['total_price'] || tmp['cost'] || 0;
       }
