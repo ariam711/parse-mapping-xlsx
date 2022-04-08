@@ -1,6 +1,10 @@
 export function parseArrayToString(obj: Record<string, any>, key: string) {
-  const value = obj[key];
+  let value = obj[key];
   if (value && Array.isArray(value)) {
-    obj[key] = value.join(',');
+    value = value.join(',');
+    if (key === 'video_url') {
+      value = value.replace(/\/watch\?v=/gi, '/embed/');
+    }
+    obj[key] = value;
   }
 }
