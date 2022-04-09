@@ -8,7 +8,8 @@ export const AttributesSet = {
   MATTRESS: 'Mattress',
   LINON: 'Linon',
   JEWELRY: 'jewelry',
-  FURNITURE: 'Furniture'
+  FURNITURE: 'Furniture',
+  SOUTHBAY: 'South Bay'
 } as const;
 
 export type AttributeSetType = Values<typeof AttributesSet>;
