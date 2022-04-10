@@ -1,8 +1,7 @@
 import { ColumnApi, GridApi } from '@ag-grid-community/core';
 import { GridReadyEvent } from '@ag-grid-community/core/dist/cjs/es5/events';
 import { action, makeObservable, observable } from 'mobx';
-import * as XLSX from 'xlsx';
-import { Range, Sheet, WorkBook } from 'xlsx';
+import { Range, read, Sheet, utils, WorkBook, writeFile } from 'xlsx';
 import { clone } from '../../../utils/clone';
 import { AttributeSetType } from '../components/configuration/attributeSetCode/AttributeSet';
 import { ProductTypesType } from '../components/configuration/productType/ProductTypes';
@@ -13,11 +12,13 @@ import { normalizeImageUrl } from './utils/normalizeImageUrl';
 import { parseArrayToString } from './utils/parseArrayToString';
 
 const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates', 'Comments'];
+// eslint-disable-next-line @typescript-eslint/unbound-method
+const { book_new, sheet_add_aoa, sheet_to_json, json_to_sheet, decode_range, encode_cell, format_cell } = utils;
 
 export class ImportStore {
   // region ATTRIBUTES
   sheets: string[] = [];
-  workBook: WorkBook = XLSX.utils.book_new();
+  workBook: WorkBook = book_new();
   optionsToMap: string[] = [];
   data: any = {};
   indexMapping = new Map<string, string>();
@@ -97,7 +98,6 @@ export class ImportStore {
   };
 
   processImportedFile = (fileData: any): void => {
-    const { read } = XLSX;
     let workbook: any;
     if (typeof FileReader !== 'undefined') {
       const reader = new FileReader();
@@ -117,7 +117,7 @@ export class ImportStore {
   };
 
   private normalizeWorkbookHeaders = (sheet: string, headers: string[]) => {
-    XLSX.utils.sheet_add_aoa(this.workBook.Sheets[sheet], [headers], { origin: 'A1' });
+    sheet_add_aoa(this.workBook.Sheets[sheet], [headers], { origin: 'A1' });
   };
 
   private processHeadersAndShow = () => {
@@ -150,9 +150,6 @@ export class ImportStore {
   };
 
   getSheetHeaders = (sheetName: string) => {
-    const {
-      utils: { decode_range, encode_cell, format_cell }
-    } = XLSX;
     const headers = [];
     const sheet: Sheet = this.workBook.Sheets[sheetName];
     const sheetRef = sheet['!ref'];
@@ -173,7 +170,7 @@ export class ImportStore {
   };
 
   extractWorkbookData = () => {
-    this.data = XLSX.utils.sheet_to_json(this.workBook.Sheets[this.sheets[0]]);
+    this.data = sheet_to_json(this.workBook.Sheets[this.sheets[0]]);
   };
 
   extractIndexMapping = () => {
@@ -259,10 +256,10 @@ export class ImportStore {
     }
 
     console.log(`CATEGORIES: ${JSON.stringify(Array.from(categories), null, 2)}`);
-    const wb = XLSX.utils.book_new();
+    const wb = book_new();
     wb.SheetNames.push(this.sheets[0]);
-    wb.Sheets[this.sheets[0]] = XLSX.utils.json_to_sheet(newBook);
-    XLSX.writeFile(wb, 'File-to-import.csv');
+    wb.Sheets[this.sheets[0]] = json_to_sheet(newBook);
+    writeFile(wb, 'File-to-import.csv');
   };
 
   // endregion
