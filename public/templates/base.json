@@ -1307,9 +1307,10 @@
     ]
   ],
   [
-    "shipping_weight_Lb",
+    "shipping_weight_lbs",
     [
-      "Shipping Weight in Lbs"
+      "Shipping Weight in Lbs",
+      "Total Shipping Weight in lbs"
     ]
   ],
   [

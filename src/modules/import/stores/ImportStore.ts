@@ -191,10 +191,13 @@ export class ImportStore {
       product_type: this.productType,
       attribute_set_code: this.attributeSet,
       vendor_facet: this.vendorFacet,
+      vendor: this.vendorFacet,
+      vendor_name: this.vendorFacet,
       flexshopper_leasing_enabled: 1,
       website_id: 0,
       is_in_stock: 1,
-      product_websites: 'base'
+      product_websites: 'base',
+      flooring_type: 'Furniture' // TODO add this to select field
     };
 
     while (i < dataLength) {
@@ -231,6 +234,10 @@ export class ImportStore {
             }
             case 'upc': {
               tmp[mapped] = JSON.stringify(Number(value));
+              break;
+            }
+            case 'sku': {
+              tmp[mapped] = String(value).trim();
               break;
             }
             case 'categories': {
