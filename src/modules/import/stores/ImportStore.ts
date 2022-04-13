@@ -11,6 +11,7 @@ import { generateUrlKey } from './utils/generateUrlKey';
 import { normalizeImageUrl } from './utils/normalizeImageUrl';
 import { normalizeText } from './utils/normalizeText';
 import { parseArrayToString } from './utils/parseArrayToString';
+import { parseSouthBayFeatures } from './utils/parseSouthBayFeatures';
 
 const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates', 'Comments'];
 // eslint-disable-next-line @typescript-eslint/unbound-method
@@ -210,7 +211,7 @@ export class ImportStore {
       while (j < entriesLength) {
         // eslint-disable-next-line prefer-const
         let [key, value] = entries[j++];
-        const mapped = this.indexMapping.get(key);
+        const mapped = this.indexMapping.get(key.trim().replace(/\s+/gi, ' '));
         if (mapped) {
           switch (mapped) {
             case 'video_url':
@@ -235,6 +236,10 @@ export class ImportStore {
             }
             case 'description': {
               tmp[mapped] = normalizeText(String(value));
+              break;
+            }
+            case 'southbay_features': {
+              parseSouthBayFeatures(String(value), tmp);
               break;
             }
             case 'upc': {
