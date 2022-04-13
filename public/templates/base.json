@@ -39,7 +39,8 @@
   [
     "assembled_size",
     [
-      "Assembled Size"
+      "Assembled Size",
+      "Assembled_Size (13.39\"w X W 15.35\"d X 25.75\"h)"
     ]
   ],
   [
@@ -729,14 +730,11 @@
   ],
   [
     "items_misc_unit_total_weight",
-    [
-      "Total Shipping Weight in lbs"
-    ]
+    []
   ],
   [
     "items_misc_unit_weight",
     [
-      "Total Shipping Weight in lbs",
       "Product Shipment Weight (lbs)"
     ]
   ],

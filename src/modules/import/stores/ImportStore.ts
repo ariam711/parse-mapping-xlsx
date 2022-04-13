@@ -9,6 +9,7 @@ import { VendorFacetType } from '../components/configuration/vendorFacet/Vendors
 import { BaseMapType } from '../types/BaseMapType';
 import { generateUrlKey } from './utils/generateUrlKey';
 import { normalizeImageUrl } from './utils/normalizeImageUrl';
+import { normalizeText } from './utils/normalizeText';
 import { parseArrayToString } from './utils/parseArrayToString';
 
 const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates', 'Comments'];
@@ -229,7 +230,11 @@ export class ImportStore {
             }
             case 'name': {
               tmp['url_key'] = generateUrlKey(String(value));
-              tmp[mapped] = value;
+              tmp[mapped] = normalizeText(String(value));
+              break;
+            }
+            case 'description': {
+              tmp[mapped] = normalizeText(String(value));
               break;
             }
             case 'upc': {
