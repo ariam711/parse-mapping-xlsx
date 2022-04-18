@@ -1155,7 +1155,8 @@
   [
     "price",
     [
-      "Price"
+      "Price",
+      "Product Retail"
     ]
   ],
   [
@@ -1196,9 +1197,7 @@
   ],
   [
     "product_retail",
-    [
-      "Product Retail"
-    ]
+    []
   ],
   [
     "quantity_and_stock_status",
@@ -1269,8 +1268,7 @@
   [
     "shipping",
     [
-      "Shipping Cost",
-      "Shipping"
+      "FlexShopper Shipping Price"
     ]
   ],
   [
@@ -1281,10 +1279,7 @@
   ],
   [
     "shipping_price",
-    [
-      "FlexShopper Shipping Price",
-      "Shipping Price"
-    ]
+    []
   ],
   [
     "shipping_restriction",

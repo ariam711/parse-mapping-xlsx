@@ -199,7 +199,7 @@ export class ImportStore {
       website_id: 0,
       is_in_stock: 1,
       product_websites: 'base',
-      flooring_type: 'Furniture' // TODO add this to select field
+      flooring_type: 'furniture' // TODO add this to select field
     };
 
     while (i < dataLength) {
