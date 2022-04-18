@@ -199,7 +199,8 @@ export class ImportStore {
       website_id: 0,
       is_in_stock: 1,
       product_websites: 'base',
-      flooring_type: 'furniture' // TODO add this to select field
+      flooring_type: 'furniture', // TODO add this to select field
+      shipping_info: 'Shipping within 72 hours'
     };
 
     while (i < dataLength) {
@@ -230,12 +231,26 @@ export class ImportStore {
               break;
             }
             case 'name': {
-              tmp['url_key'] = generateUrlKey(String(value));
+              tmp['url_key'] = generateUrlKey(String(value)).replace(/"/gi, '');
               tmp[mapped] = normalizeText(String(value));
               break;
             }
+            case 'feature_1':
+            case 'feature_2':
+            case 'feature_3':
+            case 'feature_4':
+            case 'feature_5':
+            case 'feature_6':
+            case 'feature_7':
+            case 'feature_8':
             case 'description': {
               tmp[mapped] = normalizeText(String(value));
+              break;
+            }
+            case 'warranty_text ': {
+              console.log(`Value: ${JSON.stringify(value)}`);
+              tmp[mapped] = normalizeText(String(value));
+              console.log(`tmp[mapped]: ${JSON.stringify(tmp[mapped])}`);
               break;
             }
             case 'southbay_features': {

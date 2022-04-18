@@ -1156,7 +1156,8 @@
     "price",
     [
       "Price",
-      "Product Retail"
+      "Product Retail",
+      "Suggested Retail Price"
     ]
   ],
   [
@@ -1723,6 +1724,12 @@
     "southbay_features",
     [
       "Body Copy of Description"
+    ]
+  ],
+  [
+    "shipping_info",
+    [
+      "Shipping info"
     ]
   ]
 ]
