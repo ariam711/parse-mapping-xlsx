@@ -1033,7 +1033,7 @@
     ]
   ],
   [
-    "number_boxes",
+    "number_of_boxes",
     [
       "Number of Boxes"
     ]
@@ -1645,10 +1645,7 @@
   ],
   [
     "warranty_details",
-    [
-      "warranty_details",
-      "Warranty Details"
-    ]
+    []
   ],
   [
     "warranty_phone_number",
@@ -1668,7 +1665,8 @@
   [
     "warranty_text",
     [
-      "Warranty Text"
+      "Warranty Text",
+      "Warranty Details"
     ]
   ],
   [

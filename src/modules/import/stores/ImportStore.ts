@@ -10,6 +10,7 @@ import { BaseMapType } from '../types/BaseMapType';
 import { generateUrlKey } from './utils/generateUrlKey';
 import { normalizeImageUrl } from './utils/normalizeImageUrl';
 import { normalizeText } from './utils/normalizeText';
+import { order } from './utils/order';
 import { parseArrayToString } from './utils/parseArrayToString';
 import { parseSouthBayFeatures } from './utils/parseSouthBayFeatures';
 
@@ -151,9 +152,8 @@ export class ImportStore {
     this.setOptionsToMap(options);
   };
 
-  getSheetHeaders = (sheetName: string) => {
+  getHeaders = (sheet: Sheet) => {
     const headers = [];
-    const sheet: Sheet = this.workBook.Sheets[sheetName];
     const sheetRef = sheet['!ref'];
     if (sheetRef) {
       const range: Range = decode_range(sheetRef);
@@ -170,6 +170,8 @@ export class ImportStore {
     }
     return headers;
   };
+
+  getSheetHeaders = (sheetName: string) => this.getHeaders(this.workBook.Sheets[sheetName]);
 
   extractWorkbookData = () => {
     this.data = sheet_to_json(this.workBook.Sheets[this.sheets[0]]);
@@ -208,7 +210,7 @@ export class ImportStore {
       const entriesLength = entries.length;
       if (entriesLength === 1) continue;
       let j = 0;
-      const tmp: any = { ...baseRow };
+      const tmp: any = {};
       while (j < entriesLength) {
         // eslint-disable-next-line prefer-const
         let [key, value] = entries[j++];
@@ -243,14 +245,11 @@ export class ImportStore {
             case 'feature_6':
             case 'feature_7':
             case 'feature_8':
+            case 'feature_9':
+            case 'feature_10':
+            case 'warranty_text':
             case 'description': {
               tmp[mapped] = normalizeText(String(value));
-              break;
-            }
-            case 'warranty_text ': {
-              console.log(`Value: ${JSON.stringify(value)}`);
-              tmp[mapped] = normalizeText(String(value));
-              console.log(`tmp[mapped]: ${JSON.stringify(tmp[mapped])}`);
               break;
             }
             case 'southbay_features': {
@@ -284,14 +283,16 @@ export class ImportStore {
       if (!tmp['price']) {
         tmp['price'] = tmp['total_price'] || tmp['cost'] || 0;
       }
-      newBook.push(tmp);
+      newBook.push({ ...tmp, ...baseRow });
     }
 
-    console.log(`CATEGORIES: ${JSON.stringify(Array.from(categories), null, 2)}`);
     const wb = book_new();
     wb.SheetNames.push(this.sheets[0]);
-    wb.Sheets[this.sheets[0]] = json_to_sheet(newBook);
-    writeFile(wb, 'File-to-import.csv');
+    let ws: any = json_to_sheet(newBook);
+    const header: string[] = order(this.getHeaders(ws));
+    ws = json_to_sheet(sheet_to_json(ws), { header });
+    wb.Sheets[this.sheets[0]] = ws;
+    writeFile(wb, `${this.attributeSet}-Import.csv`);
   };
 
   // endregion
