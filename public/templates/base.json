@@ -1725,6 +1725,12 @@
     ]
   ],
   [
+    "southbay_sku",
+    [
+      "Sku"
+    ]
+  ],
+  [
     "shipping_info",
     [
       "Shipping info"

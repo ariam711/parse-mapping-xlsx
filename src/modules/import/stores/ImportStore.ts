@@ -5,6 +5,7 @@ import { Range, read, Sheet, utils, WorkBook, writeFile } from 'xlsx';
 import { clone } from '../../../utils/clone';
 import { AttributeSetType } from '../components/configuration/attributeSetCode/AttributeSet';
 import { ProductTypesType } from '../components/configuration/productType/ProductTypes';
+import { StoreTypesType } from '../components/configuration/storeType/StoreTypes';
 import { VendorFacetType } from '../components/configuration/vendorFacet/VendorsFacet';
 import { BaseMapType } from '../types/BaseMapType';
 import { generateUrlKey } from './utils/generateUrlKey';
@@ -35,6 +36,7 @@ export class ImportStore {
   productType: ProductTypesType = 'simple';
   attributeSet: AttributeSetType = 'Default';
   vendorFacet: VendorFacetType = 'Linon';
+  storeType: StoreTypesType = 'Eboohome';
 
   // endregion
   // endregion
@@ -45,11 +47,13 @@ export class ImportStore {
       productType: observable,
       attributeSet: observable,
       vendorFacet: observable,
+      storeType: observable,
 
       setOptionsToMap: action,
       setProductType: action,
       setAttributeSet: action,
-      setVendorFacet: action
+      setVendorFacet: action,
+      setStoreType: action
     });
     this.init();
   }
@@ -57,6 +61,9 @@ export class ImportStore {
   // region SETTERS
   setVendorFacet = (value: VendorFacetType = 'Linon') => {
     this.vendorFacet = value;
+  };
+  setStoreType = (value: StoreTypesType = 'Eboohome') => {
+    this.storeType = value;
   };
   setProductType = (value: ProductTypesType = 'simple') => {
     this.productType = value;
@@ -197,12 +204,13 @@ export class ImportStore {
       vendor_facet: this.vendorFacet,
       vendor: this.vendorFacet,
       vendor_name: this.vendorFacet,
-      flexshopper_leasing_enabled: 1,
+      flexshopper_leasing_enabled: 0,
       website_id: 0,
       is_in_stock: 1,
       product_websites: 'base',
       flooring_type: 'furniture', // TODO add this to select field
-      shipping_info: 'Shipping within 72 hours'
+      shipping_info: '',
+      shipping_range: '5-12'
     };
 
     while (i < dataLength) {
@@ -261,14 +269,29 @@ export class ImportStore {
               break;
             }
             case 'sku': {
-              tmp[mapped] = String(value).trim();
+              const sku = String(value).trim();
+              tmp[mapped] = sku;
+              tmp['vendor_model_number'] = sku;
+              break;
+            }
+            case 'southbay_sku': {
+              const sku = `FS${String(value).trim()}`;
+              tmp['sku'] = sku;
+              tmp['vendor_model_number'] = sku;
               break;
             }
             case 'categories': {
-              tmp[mapped] = `Default Category/${String(value)
+              tmp[mapped] = `${this.storeType === 'Eboohome' ? 'Default Category' : 'Jewelry'}/${String(value)
                 .trim()
                 .replace(/\s*[>/]\s*/gi, '/')}`.replace(/\s+/gi, ' ');
               categories.add(tmp[mapped]);
+              break;
+            }
+            case 'total_price': {
+              const tp = Number(value);
+              tmp[mapped] = value;
+              // https://gitlab.com/front10-devs/flexretail/-/issues/32
+              tmp['flexshopper_leasing_enabled'] = tp > 50 && tp < 2500 ? 1 : 0;
               break;
             }
             default: {
@@ -283,7 +306,7 @@ export class ImportStore {
       if (!tmp['price']) {
         tmp['price'] = tmp['total_price'] || tmp['cost'] || 0;
       }
-      newBook.push({ ...tmp, ...baseRow });
+      newBook.push({ ...baseRow, ...tmp });
     }
 
     const wb = book_new();
