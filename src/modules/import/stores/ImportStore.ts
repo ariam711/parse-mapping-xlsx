@@ -216,7 +216,7 @@ export class ImportStore {
     while (i < dataLength) {
       const entries = Object.entries(data[i++]);
       const entriesLength = entries.length;
-      if (entriesLength === 1) continue;
+      if (entriesLength < 4) continue;
       let j = 0;
       const tmp: any = {};
       while (j < entriesLength) {
@@ -275,7 +275,8 @@ export class ImportStore {
               break;
             }
             case 'southbay_sku': {
-              const sku = `FS${String(value).trim()}`;
+              const v = String(value).trim();
+              const sku = v.startsWith('FS') ? v : `FS${v}`;
               tmp['sku'] = sku;
               tmp['vendor_model_number'] = sku;
               break;
