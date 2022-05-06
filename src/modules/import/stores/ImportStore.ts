@@ -255,6 +255,14 @@ export class ImportStore {
             case 'feature_8':
             case 'feature_9':
             case 'feature_10':
+            case 'feature_11':
+            case 'feature_12':
+            case 'feature_13':
+            case 'feature_14':
+            case 'feature_15': {
+              tmp[mapped] = normalizeText(String(value)).replace(/\s*[•*]\s*/gi, '');
+              break;
+            }
             case 'warranty_text':
             case 'description': {
               tmp[mapped] = normalizeText(String(value));

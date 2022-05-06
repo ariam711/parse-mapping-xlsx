@@ -20,13 +20,11 @@ export function parseSouthBayFeatures(text: string, obj: any) {
     }
   });
 
-  console.log(`FeatText: `, featText);
-
   let features = 0;
 
   const parseFeatureArray = (arr: string[]) => {
     arr.forEach(t => {
-      if (features >= 10) return;
+      if (features >= 15) return;
       const feat = t
         .trim()
         .replace(/\s+/gi, ' ')

@@ -554,6 +554,55 @@
     ]
   ],
   [
+    "feature_9",
+    [
+      "Feature 9",
+      "Feature #9"
+    ]
+  ],
+  [
+    "feature_10",
+    [
+      "Feature 10",
+      "Feature #10"
+    ]
+  ],
+  [
+    "feature_11",
+    [
+      "Feature 11",
+      "Feature #11"
+    ]
+  ],
+  [
+    "feature_12",
+    [
+      "Feature 12",
+      "Feature #12"
+    ]
+  ],
+  [
+    "feature_13",
+    [
+      "Feature 13",
+      "Feature #13"
+    ]
+  ],
+  [
+    "feature_14",
+    [
+      "Feature 14",
+      "Feature #14"
+    ]
+  ],
+  [
+    "feature_15",
+    [
+      "Feature 15",
+      "Feature #15"
+    ]
+  ],
+  [
     "finish",
     [
       "Finish"
@@ -1659,7 +1708,8 @@
     [
       "warranty_email_address",
       "warrantyemail address",
-      "Warranty Email Address"
+      "Warranty Email Address",
+      "Warranty Email"
     ]
   ],
   [
@@ -1709,7 +1759,8 @@
     "qty",
     [
       "Inventory/Quantity - Do not show if less than X in website",
-      "Inventory/Quanitity - Do not show if less than X in website"
+      "Inventory/Quanitity - Do not show if less than X in website",
+      "Inventory (Quantity)"
     ]
   ],
   [
