@@ -231,7 +231,7 @@ export class ImportStore {
                 if (!tmp[mapped]) {
                   tmp[mapped] = [];
                 }
-                tmp[mapped].push(normalizeImageUrl(String(value)));
+                tmp[mapped].push(this.attributeSet === 'Linon' ? String(value) : normalizeImageUrl(String(value)));
               }
               break;
             }
