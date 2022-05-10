@@ -210,8 +210,10 @@ export class ImportStore {
       product_websites: 'base',
       flooring_type: 'furniture', // TODO add this to select field
       shipping_info: '',
-      shipping_range: '5-12'
+      shipping_range: this.attributeSet === 'Linon' ? '7-13' : '5-12'
     };
+
+    const headersWithOutMapping = new Set();
 
     while (i < dataLength) {
       const entries = Object.entries(data[i++]);
@@ -231,7 +233,7 @@ export class ImportStore {
                 if (!tmp[mapped]) {
                   tmp[mapped] = [];
                 }
-                tmp[mapped].push(this.attributeSet === 'Linon' ? String(value) : normalizeImageUrl(String(value)));
+                tmp[mapped].push(normalizeImageUrl(String(value), mapped === 'video_url'));
               }
               break;
             }
@@ -260,7 +262,10 @@ export class ImportStore {
             case 'feature_13':
             case 'feature_14':
             case 'feature_15': {
-              tmp[mapped] = normalizeText(String(value)).replace(/\s*[•*]\s*/gi, '');
+              const feat = normalizeText(String(value)).replace(/\s*[•*]\s*/gi, '');
+              if (feat !== 'N/A') {
+                tmp[mapped] = feat;
+              }
               break;
             }
             case 'warranty_text':
@@ -273,7 +278,7 @@ export class ImportStore {
               break;
             }
             case 'upc': {
-              tmp[mapped] = JSON.stringify(Number(value));
+              tmp[mapped] = typeof value === 'string' ? value.trim() : JSON.stringify(Number(value));
               break;
             }
             case 'sku': {
@@ -307,7 +312,9 @@ export class ImportStore {
               tmp[mapped] = value;
             }
           }
-        } else console.warn(`Header "${key}" has no mapping value`);
+        } else {
+          headersWithOutMapping.add(key);
+        }
       }
 
       parseArrayToString(tmp, 'gallery_images');
@@ -317,6 +324,7 @@ export class ImportStore {
       }
       newBook.push({ ...baseRow, ...tmp });
     }
+    console.log(`Headers without mapping: ${JSON.stringify(Array.from(headersWithOutMapping), null, 2)}`);
 
     const wb = book_new();
     wb.SheetNames.push(this.sheets[0]);
