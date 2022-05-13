@@ -1,4 +1,4 @@
-import { AppBar, createTheme, ThemeProvider, Toolbar, Typography } from '@mui/material';
+import { AppBar, createTheme, SxProps, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import React, { memo } from 'react';
 import Import from './modules/import';
 import Brick from './modules/brick';
@@ -7,7 +7,7 @@ import NoMatch from './modules/noMatch';
 
 const darkTheme = createTheme({ palette: { mode: 'dark' } });
 
-const menuItemStyles = {
+const menuItemStyles: SxProps = {
   border: '1px solid',
   borderRadius: '5px',
   borderColor: 'rgba(255,255,255,0.5)',
