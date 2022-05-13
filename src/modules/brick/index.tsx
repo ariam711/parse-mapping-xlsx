@@ -5,7 +5,6 @@ import 'primereact/resources/themes/arya-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import { Tree } from 'primereact/tree';
 import { Box, Button, SxProps, Typography } from '@mui/material';
-import { data as nodes } from './data';
 import { observer } from 'mobx-react-lite';
 
 const backgroundStyles: SxProps = {
@@ -32,7 +31,7 @@ const toolbarStyles: SxProps = {
 };
 
 const Brick = (): JSX.Element => {
-  const { onGetCategories, gettingCategories, failedToGetCategories } = useContext(ContextBrickStore);
+  const { onGetCategories, gettingCategories, failedToGetCategories, categoryTree } = useContext(ContextBrickStore);
 
   const nodeTemplate = (node: any) => {
     return <Box>{node.label}</Box>;
@@ -47,7 +46,7 @@ const Brick = (): JSX.Element => {
         {failedToGetCategories && <Typography sx={errorStyles}>failed to get categories</Typography>}
       </Box>
       <Box sx={treeContainerStyles}>
-        <Tree value={nodes} dragdropScope="tree" nodeTemplate={nodeTemplate} />
+        <Tree value={categoryTree} dragdropScope="tree" nodeTemplate={nodeTemplate} />
       </Box>
     </Box>
   );

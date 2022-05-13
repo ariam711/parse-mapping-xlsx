@@ -1,10 +1,11 @@
 import { action, makeObservable, observable } from 'mobx';
-import { CategoryType } from '../types/CategoryType';
+import { CategoryTreeType } from '../types/CategoryTreeType';
 import CategoryService from '../services/CategoryService';
+import { TreeNodeType } from '../types/TreeNodeType';
 
 export class BrickStore {
   // region ATTRIBUTES
-  categories: CategoryType[] = [];
+  categoryTree: TreeNodeType[] = [];
   gettingCategories = false;
   failedToGetCategories = false;
   // endregion
@@ -12,7 +13,7 @@ export class BrickStore {
 
   constructor() {
     makeObservable<BrickStore>(this, {
-      categories: observable,
+      categoryTree: observable,
       gettingCategories: observable,
       failedToGetCategories: observable,
 
@@ -25,8 +26,8 @@ export class BrickStore {
   }
 
   // region SETTERS
-  setCategories = (categories: CategoryType[]) => {
-    this.categories = categories;
+  setCategories = (categories: TreeNodeType[]) => {
+    this.categoryTree = categories;
   };
   setGettingCategories = (state: boolean) => {
     this.gettingCategories = state;
@@ -40,6 +41,25 @@ export class BrickStore {
   init = () => {
     // get default categories
   };
+
+  convertCategoryTreeToTreeNode = (category: CategoryTreeType): TreeNodeType => {
+    const treeNode: TreeNodeType = {
+      key: category.id.toString(),
+      label: category.name,
+      url: category.url,
+      data: category.id.toString(),
+      icon: '',
+      children: []
+    };
+
+    if (category.children_data.length > 0) {
+      category.children_data.forEach((child: CategoryTreeType) => {
+        return treeNode.children.push(this.convertCategoryTreeToTreeNode(child));
+      });
+    }
+
+    return treeNode;
+  };
   // endregion
 
   // region EVENTS
@@ -47,8 +67,9 @@ export class BrickStore {
     try {
       this.setGettingCategories(true);
       const response = await this.CategoryService.getCategories();
-      const categories = await response.json();
-      console.log(categories);
+      const categoryTree: CategoryTreeType = await response.json();
+      const treeNode = this.convertCategoryTreeToTreeNode(categoryTree);
+      this.setCategories(treeNode.children);
     } catch (e) {
       this.setFailedToGetCategories(true);
       console.log(e);
