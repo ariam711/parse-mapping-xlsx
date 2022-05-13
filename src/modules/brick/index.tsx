@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ContextBrickStore } from './contexts/ContextBrickStore';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import { Tree } from 'primereact/tree';
-import { Box, SxProps } from '@mui/material';
+import { Box, Button, SxProps } from '@mui/material';
 import { data as nodes } from './data';
 
 const backgroundStyles: SxProps = {
@@ -18,17 +19,25 @@ const treeContainerStyles: SxProps = {
   padding: '20px'
 };
 
-const brick = () => {
+const Brick = (): JSX.Element => {
+  const { onGetCategories } = useContext(ContextBrickStore);
+
   const nodeTemplate = (node: any) => {
     return <Box>{node.label}</Box>;
   };
 
   return (
     <Box sx={backgroundStyles}>
+      <Box>
+        <Button variant="outlined" onClick={onGetCategories}>
+          Get Categories
+        </Button>
+      </Box>
       <Box sx={treeContainerStyles}>
         <Tree value={nodes} dragdropScope="tree" nodeTemplate={nodeTemplate} />
       </Box>
     </Box>
   );
 };
-export default brick;
+
+export default Brick;
