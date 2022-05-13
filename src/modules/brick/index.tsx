@@ -4,8 +4,9 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import { Tree } from 'primereact/tree';
-import { Box, Button, SxProps } from '@mui/material';
+import { Box, Button, SxProps, Typography } from '@mui/material';
 import { data as nodes } from './data';
+import { observer } from 'mobx-react-lite';
 
 const backgroundStyles: SxProps = {
   bgcolor: 'background.default',
@@ -19,8 +20,19 @@ const treeContainerStyles: SxProps = {
   padding: '20px'
 };
 
+const errorStyles: SxProps = {
+  fontSize: '0.9rem',
+  color: 'red'
+};
+
+const toolbarStyles: SxProps = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  p: '20px 5px 5px'
+};
+
 const Brick = (): JSX.Element => {
-  const { onGetCategories } = useContext(ContextBrickStore);
+  const { onGetCategories, gettingCategories, failedToGetCategories } = useContext(ContextBrickStore);
 
   const nodeTemplate = (node: any) => {
     return <Box>{node.label}</Box>;
@@ -28,10 +40,11 @@ const Brick = (): JSX.Element => {
 
   return (
     <Box sx={backgroundStyles}>
-      <Box>
+      <Box sx={toolbarStyles}>
         <Button variant="outlined" onClick={onGetCategories}>
-          Get Categories
+          Get Categories {gettingCategories && '...'}
         </Button>
+        {failedToGetCategories && <Typography sx={errorStyles}>failed to get categories</Typography>}
       </Box>
       <Box sx={treeContainerStyles}>
         <Tree value={nodes} dragdropScope="tree" nodeTemplate={nodeTemplate} />
@@ -40,4 +53,4 @@ const Brick = (): JSX.Element => {
   );
 };
 
-export default Brick;
+export default observer(Brick);
