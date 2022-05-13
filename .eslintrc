@@ -34,6 +34,18 @@
       {
         "patterns": ["@mui/*/*/*", "!@mui/material/test-utils/*"]
       }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "trailingComma": "none",
+        "singleQuote": true,
+        "printWidth": 120,
+        "tabWidth": 2,
+        "arrowParens": "avoid",
+        "jsxBracketSameLine": true,
+        "endOfLine": "lf"
+      }
     ]
   },
   "settings": {
