@@ -261,7 +261,11 @@ export class ImportStore {
             case 'feature_12':
             case 'feature_13':
             case 'feature_14':
-            case 'feature_15': {
+            case 'feature_15':
+            case 'actual_product_weight':
+            case 'actual_product_length':
+            case 'actual_product_width':
+            case 'actual_product_height': {
               const feat = normalizeText(String(value)).replace(/\s*[•*]\s*/gi, '');
               if (feat !== 'N/A') {
                 tmp[mapped] = feat;
