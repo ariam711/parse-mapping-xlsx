@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ContextBrickStore } from './contexts/ContextBrickStore';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-blue/theme.css';
@@ -8,6 +8,9 @@ import { Box, Button, Checkbox, SxProps, TextField, Typography } from '@mui/mate
 import { observer } from 'mobx-react-lite';
 import { TreeNodeType } from './types/TreeNodeType';
 import { AddBoxOutlined, Delete } from '@mui/icons-material';
+import '../../assets/css/menu.css';
+import brick from './templates/brick';
+import { flexshopper } from './scripts/flexshopper';
 
 // region STYLES
 
@@ -88,6 +91,11 @@ const Brick = (): JSX.Element => {
     setEditingId
   } = useContext(ContextBrickStore);
 
+  // component did mount
+  useEffect(() => {
+    flexshopper();
+  }, []);
+
   const labelEditorTemplate = (
     <TextField
       sx={nodeLabelEditorStyles}
@@ -151,6 +159,7 @@ const Brick = (): JSX.Element => {
 
   return (
     <Box sx={backgroundStyles}>
+      <div className="header-menu-outer" dangerouslySetInnerHTML={{ __html: brick }} />
       <Box sx={toolbarStyles}>
         <Box>
           <Button variant="outlined" onClick={onGetCategories}>
