@@ -2,7 +2,8 @@ import { action, makeObservable, observable, toJS } from 'mobx';
 import { CategoryTreeType } from '../types/CategoryTreeType';
 import CategoryService from '../services/CategoryService';
 import { TreeNodeType } from '../types/TreeNodeType';
-import { findNodeByIdAndDelete, findNodeByIdAndUpdate } from '../utils/tree';
+import { findNodeByIdAndDelete, findNodeByIdAndInsert, findNodeByIdAndUpdate } from '../../../utils/tree';
+import { makeId } from 'src/utils/crypt';
 
 export class BrickStore {
   // region ATTRIBUTES
@@ -123,6 +124,20 @@ export class BrickStore {
   onDeleteCategory = (id: string) => {
     let categoryTreeCopy = toJS(this.categoryTree);
     categoryTreeCopy = findNodeByIdAndDelete(categoryTreeCopy, id);
+    this.setCategories(categoryTreeCopy);
+  };
+
+  onAddCategory = (id: string) => {
+    let categoryTreeCopy = toJS(this.categoryTree);
+    const newNode: TreeNodeType = {
+      key: makeId(),
+      label: 'New Category',
+      url: '',
+      data: 'New Category',
+      enabled: true,
+      children: []
+    };
+    categoryTreeCopy = findNodeByIdAndInsert(categoryTreeCopy, id, newNode);
     this.setCategories(categoryTreeCopy);
   };
   // endregion

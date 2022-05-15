@@ -7,7 +7,7 @@ import { Tree } from 'primereact/tree';
 import { Box, Button, Checkbox, SxProps, TextField, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { TreeNodeType } from './types/TreeNodeType';
-import { Delete } from '@mui/icons-material';
+import { AddBoxOutlined, Delete } from '@mui/icons-material';
 
 // region STYLES
 
@@ -51,10 +51,6 @@ const nodeLabelStyles: SxProps = {
   padding: '6px 16px 0 12px'
 };
 
-const checkboxStyles: SxProps = {
-  ml: ''
-};
-
 const nodeLabelEditorStyles: SxProps = {
   input: {
     height: '42px',
@@ -62,9 +58,11 @@ const nodeLabelEditorStyles: SxProps = {
   }
 };
 
-const deleteStyles: SxProps = {
+const iconStyles: SxProps = {
   cursor: 'pointer',
   position: 'relative',
+  padding: '0',
+  ml: '5px',
   top: '8px',
   ':hover': {
     color: 'primary.main'
@@ -84,6 +82,7 @@ const Brick = (): JSX.Element => {
     onToggleCategory,
     onSetCategoryLabel,
     onDeleteCategory,
+    onAddCategory,
     setCategories,
     setEditingLabel,
     setEditingId
@@ -112,7 +111,7 @@ const Brick = (): JSX.Element => {
 
   const labelTemplate = (node: any) => (
     <Box
-      sx={nodeLabelStyles}
+      sx={{ ...nodeLabelStyles, top: 0 }}
       onDoubleClick={() => {
         setEditingLabel(node.label);
         setEditingId(node.key);
@@ -127,16 +126,22 @@ const Brick = (): JSX.Element => {
         {editingLabel && editingId === node.key ? labelEditorTemplate : labelTemplate(node)}
         <Box>
           <Checkbox
-            sx={checkboxStyles}
+            sx={{ ...iconStyles, top: 0 }}
             checked={node.enabled}
             onChange={() => {
               onToggleCategory(node.key);
             }}
           />
           <Delete
-            sx={deleteStyles}
+            sx={iconStyles}
             onClick={() => {
               onDeleteCategory(node.key);
+            }}
+          />
+          <AddBoxOutlined
+            sx={iconStyles}
+            onClick={() => {
+              onAddCategory(node.key);
             }}
           />
         </Box>

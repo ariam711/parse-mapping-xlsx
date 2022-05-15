@@ -1,4 +1,4 @@
-import { TreeNodeType } from '../types/TreeNodeType';
+import { TreeNodeType } from '../modules/brick/types/TreeNodeType';
 
 /**
  * Walks through a tree, executes a callback on node matching id, and returns a
@@ -64,6 +64,27 @@ export const findNodeByIdAndDelete = (tree: TreeNodeType[], id: string): TreeNod
       continue;
     }
     nodeCopy.children = findNodeByIdAndDelete(node.children, id);
+    treeCopy.push(nodeCopy);
+  }
+  return treeCopy;
+};
+
+/**
+ * Walks through a tree node array, finds the node that matches the id, inserts a new
+ * node at the same level, and returns a new tree with the inserted node.
+ * @param tree
+ * @param id
+ * @param newNode
+ */
+export const findNodeByIdAndInsert = (tree: TreeNodeType[], id: string, newNode: TreeNodeType): TreeNodeType[] => {
+  const treeCopy: TreeNodeType[] = [];
+  for (const node of tree) {
+    const nodeCopy = { ...node };
+    if (nodeCopy.key === id) {
+      treeCopy.push(nodeCopy, newNode);
+      continue;
+    }
+    nodeCopy.children = findNodeByIdAndInsert(node.children, id, newNode);
     treeCopy.push(nodeCopy);
   }
   return treeCopy;
