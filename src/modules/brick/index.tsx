@@ -4,8 +4,10 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import { Tree } from 'primereact/tree';
-import { Box, Button, SxProps, Typography } from '@mui/material';
+import { Box, Button, Checkbox, SxProps, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
+
+// region STYLES
 
 const backgroundStyles: SxProps = {
   bgcolor: 'background.default',
@@ -30,20 +32,50 @@ const toolbarStyles: SxProps = {
   p: '20px 5px 5px'
 };
 
+const nodeStyles: SxProps = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  minWidth: '300px'
+};
+
+const nodeLabelStyles: SxProps = {
+  padding: '9px 0'
+};
+
+const checkboxStyles: SxProps = {
+  ml: ''
+};
+
+// endregion
+
 const Brick = (): JSX.Element => {
-  const { onGetCategories, gettingCategories, failedToGetCategories, categoryTree } = useContext(ContextBrickStore);
+  const { onGetCategories, gettingCategories, failedToGetCategories, categoryTree, onToggleCategory } =
+    useContext(ContextBrickStore);
 
   const nodeTemplate = (node: any) => {
-    return <Box>{node.label}</Box>;
+    return (
+      <Box sx={nodeStyles}>
+        <Box sx={nodeLabelStyles}>{node.label}</Box>
+        <Checkbox
+          sx={checkboxStyles}
+          checked={node.enabled}
+          onChange={() => {
+            onToggleCategory(node.key);
+          }}
+        />
+      </Box>
+    );
   };
 
   return (
     <Box sx={backgroundStyles}>
       <Box sx={toolbarStyles}>
-        <Button variant="outlined" onClick={onGetCategories}>
-          Get Categories {gettingCategories && '...'}
-        </Button>
-        {failedToGetCategories && <Typography sx={errorStyles}>failed to get categories</Typography>}
+        <Box>
+          <Button variant="outlined" onClick={onGetCategories}>
+            Get Categories {gettingCategories && '...'}
+          </Button>
+          {failedToGetCategories && <Typography sx={errorStyles}>failed to get categories</Typography>}
+        </Box>
       </Box>
       <Box sx={treeContainerStyles}>
         <Tree value={categoryTree} dragdropScope="tree" nodeTemplate={nodeTemplate} />

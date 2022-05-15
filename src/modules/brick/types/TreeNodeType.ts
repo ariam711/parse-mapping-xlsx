@@ -3,6 +3,7 @@ export type TreeNodeType = {
   label: string;
   url: string;
   data: string;
+  enabled: boolean;
   icon?: string;
   children: TreeNodeType[];
 };
