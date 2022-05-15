@@ -3,7 +3,6 @@ export type CategoryTreeType = {
   is_active: boolean;
   level: number;
   name: string;
-  url: string;
   parent_id: number;
   position: number;
   product_count: number;

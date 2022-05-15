@@ -8,12 +8,12 @@ import { ProductTypesType } from '../components/configuration/productType/Produc
 import { StoreTypesType } from '../components/configuration/storeType/StoreTypes';
 import { VendorFacetType } from '../components/configuration/vendorFacet/VendorsFacet';
 import { BaseMapType } from '../types/BaseMapType';
-import { generateUrlKey } from './utils/generateUrlKey';
-import { normalizeImageUrl } from './utils/normalizeImageUrl';
-import { normalizeText } from './utils/normalizeText';
-import { order } from './utils/order';
-import { parseArrayToString } from './utils/parseArrayToString';
-import { parseSouthBayFeatures } from './utils/parseSouthBayFeatures';
+import { generateUrlKey } from '../../../utils/generateUrlKey';
+import { normalizeImageUrl } from '../../../utils/normalizeImageUrl';
+import { normalizeText } from '../../../utils/normalizeText';
+import { order } from '../../../utils/order';
+import { parseArrayToString } from '../../../utils/parseArrayToString';
+import { parseSouthBayFeatures } from '../../../utils/parseSouthBayFeatures';
 
 const EXCLUDE_SHEETS = ['Drop Down Menu', 'Internal - Updates', 'Comments'];
 // eslint-disable-next-line @typescript-eslint/unbound-method

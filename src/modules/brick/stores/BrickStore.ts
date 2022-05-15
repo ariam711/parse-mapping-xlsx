@@ -3,7 +3,8 @@ import { CategoryTreeType } from '../types/CategoryTreeType';
 import CategoryService from '../services/CategoryService';
 import { TreeNodeType } from '../types/TreeNodeType';
 import { findNodeByIdAndDelete, findNodeByIdAndInsert, findNodeByIdAndUpdate } from '../../../utils/tree';
-import { makeId } from 'src/utils/crypt';
+import { generateUrlKey } from '../../../utils/generateUrlKey';
+import randomstring from 'randomstring';
 
 export class BrickStore {
   // region ATTRIBUTES
@@ -60,11 +61,14 @@ export class BrickStore {
     void this.getCategories();
   };
 
-  private convertCategoryTreeToTreeNode = (category: CategoryTreeType): TreeNodeType => {
+  // TODO: optimize this method
+  private convertCategoryTreeToTreeNode = (category: CategoryTreeType, parentUrl?: string): TreeNodeType => {
+    let url = parentUrl ? `${parentUrl}/${category.name}` : category.name;
+    url = generateUrlKey(url, false, true).replace('default-category/', '');
     const treeNode: TreeNodeType = {
       key: category.id.toString(),
       label: category.name,
-      url: category.url,
+      url,
       data: category.id.toString(),
       enabled: true,
       children: []
@@ -72,7 +76,7 @@ export class BrickStore {
 
     if (category.children_data.length > 0) {
       category.children_data.forEach((child: CategoryTreeType) =>
-        treeNode.children.push(this.convertCategoryTreeToTreeNode(child))
+        treeNode.children.push(this.convertCategoryTreeToTreeNode(child, url))
       );
     }
 
@@ -130,7 +134,7 @@ export class BrickStore {
   onAddCategory = (id: string) => {
     let categoryTreeCopy = toJS(this.categoryTree);
     const newNode: TreeNodeType = {
-      key: makeId(),
+      key: randomstring.generate({ length: 5, capitalization: 'lowercase' }),
       label: 'New Category',
       url: '',
       data: 'New Category',
