@@ -49,3 +49,22 @@ export const walkTreeAndRun = (
   }
   return treeCopy;
 };
+
+/**
+ * Walks through a tree node array, deletes the node matching the id, and returns a
+ * new tree without the deleted node.
+ * @param tree
+ * @param id
+ */
+export const findNodeByIdAndDelete = (tree: TreeNodeType[], id: string): TreeNodeType[] => {
+  const treeCopy: TreeNodeType[] = [];
+  for (const node of tree) {
+    const nodeCopy = { ...node };
+    if (nodeCopy.key === id) {
+      continue;
+    }
+    nodeCopy.children = findNodeByIdAndDelete(node.children, id);
+    treeCopy.push(nodeCopy);
+  }
+  return treeCopy;
+};

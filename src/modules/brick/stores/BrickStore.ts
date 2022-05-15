@@ -2,7 +2,7 @@ import { action, makeObservable, observable, toJS } from 'mobx';
 import { CategoryTreeType } from '../types/CategoryTreeType';
 import CategoryService from '../services/CategoryService';
 import { TreeNodeType } from '../types/TreeNodeType';
-import { findNodeByIdAndUpdate } from '../utils/tree';
+import { findNodeByIdAndDelete, findNodeByIdAndUpdate } from '../utils/tree';
 
 export class BrickStore {
   // region ATTRIBUTES
@@ -118,6 +118,12 @@ export class BrickStore {
     this.setCategories(categoryTreeCopy);
     this.setEditingLabel(null);
     this.setEditingId(null);
+  };
+
+  onDeleteCategory = (id: string) => {
+    let categoryTreeCopy = toJS(this.categoryTree);
+    categoryTreeCopy = findNodeByIdAndDelete(categoryTreeCopy, id);
+    this.setCategories(categoryTreeCopy);
   };
   // endregion
 }

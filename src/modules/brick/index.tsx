@@ -7,6 +7,7 @@ import { Tree } from 'primereact/tree';
 import { Box, Button, Checkbox, SxProps, TextField, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 import { TreeNodeType } from './types/TreeNodeType';
+import { Delete } from '@mui/icons-material';
 
 // region STYLES
 
@@ -61,6 +62,15 @@ const nodeLabelEditorStyles: SxProps = {
   }
 };
 
+const deleteStyles: SxProps = {
+  cursor: 'pointer',
+  position: 'relative',
+  top: '8px',
+  ':hover': {
+    color: 'primary.main'
+  }
+};
+
 // endregion
 
 const Brick = (): JSX.Element => {
@@ -73,48 +83,63 @@ const Brick = (): JSX.Element => {
     onGetCategories,
     onToggleCategory,
     onSetCategoryLabel,
+    onDeleteCategory,
     setCategories,
     setEditingLabel,
     setEditingId
   } = useContext(ContextBrickStore);
 
+  const labelEditorTemplate = (
+    <TextField
+      sx={nodeLabelEditorStyles}
+      autoFocus
+      onChange={event => {
+        setEditingLabel(event.target.value);
+      }}
+      onBlur={() => {
+        if (!editingId || !editingLabel) return;
+        onSetCategoryLabel(editingId, editingLabel);
+      }}
+      onKeyPress={event => {
+        if (!editingId || !editingLabel) return;
+        if (event.key === 'Enter') {
+          onSetCategoryLabel(editingId, editingLabel);
+        }
+      }}
+      value={editingLabel}
+    />
+  );
+
+  const labelTemplate = (node: any) => (
+    <Box
+      sx={nodeLabelStyles}
+      onDoubleClick={() => {
+        setEditingLabel(node.label);
+        setEditingId(node.key);
+      }}>
+      {node.label}
+    </Box>
+  );
+
   const nodeTemplate = (node: any) => {
     return (
       <Box sx={nodeStyles}>
-        {editingLabel && editingId === node.key ? (
-          <TextField
-            sx={nodeLabelEditorStyles}
-            autoFocus
-            onChange={event => {
-              setEditingLabel(event.target.value);
+        {editingLabel && editingId === node.key ? labelEditorTemplate : labelTemplate(node)}
+        <Box>
+          <Checkbox
+            sx={checkboxStyles}
+            checked={node.enabled}
+            onChange={() => {
+              onToggleCategory(node.key);
             }}
-            onBlur={() => {
-              onSetCategoryLabel(editingId as string, editingLabel);
-            }}
-            onKeyPress={event => {
-              if (event.key === 'Enter') {
-                onSetCategoryLabel(editingId as string, editingLabel);
-              }
-            }}
-            value={editingLabel}
           />
-        ) : (
-          <Box
-            sx={nodeLabelStyles}
-            onDoubleClick={() => {
-              setEditingLabel(node.label);
-              setEditingId(node.key);
-            }}>
-            {node.label}
-          </Box>
-        )}
-        <Checkbox
-          sx={checkboxStyles}
-          checked={node.enabled}
-          onChange={() => {
-            onToggleCategory(node.key);
-          }}
-        />
+          <Delete
+            sx={deleteStyles}
+            onClick={() => {
+              onDeleteCategory(node.key);
+            }}
+          />
+        </Box>
       </Box>
     );
   };
