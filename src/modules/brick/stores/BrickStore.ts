@@ -102,7 +102,13 @@ export class BrickStore {
 
   onToggleCategory = (id: string) => {
     let categoryTreeCopy = toJS(this.categoryTree);
-    categoryTreeCopy = findNodeByIdAndUpdate(categoryTreeCopy, id, node => ({ ...node, enabled: !node.enabled }));
+    let enabled: boolean;
+    const toggleCategory = (node: TreeNodeType) => {
+      enabled = !node.enabled;
+      return { ...node, enabled };
+    };
+    const toggleChildren = (node: TreeNodeType) => ({ ...node, enabled });
+    categoryTreeCopy = findNodeByIdAndUpdate(categoryTreeCopy, id, toggleCategory, toggleChildren);
     this.setCategories(categoryTreeCopy);
   };
 
