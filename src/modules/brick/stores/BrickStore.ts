@@ -9,6 +9,8 @@ export class BrickStore {
   categoryTree: TreeNodeType[] = [];
   gettingCategories = false;
   failedToGetCategories = false;
+  editingLabel: string | null = null;
+  editingId: string | null = null;
   // endregion
   private CategoryService: CategoryService;
 
@@ -17,10 +19,14 @@ export class BrickStore {
       categoryTree: observable,
       gettingCategories: observable,
       failedToGetCategories: observable,
+      editingLabel: observable,
+      editingId: observable,
 
       setCategories: action,
       setGettingCategories: action,
-      setFailedToGetCategories: action
+      setFailedToGetCategories: action,
+      setEditingLabel: action,
+      setEditingId: action
     });
     this.CategoryService = new CategoryService();
     void this.init();
@@ -38,23 +44,19 @@ export class BrickStore {
   setFailedToGetCategories = (state: boolean) => {
     this.failedToGetCategories = state;
   };
+
+  setEditingLabel = (label: string | null) => {
+    this.editingLabel = label;
+  };
+
+  setEditingId = (id: string | null) => {
+    this.editingId = id;
+  };
   // endregion
 
   // region METHODS
-  private init = async () => {
-    try {
-      this.setGettingCategories(true);
-      const response = await this.CategoryService.getCategories();
-      const categoryTree: CategoryTreeType = await response.json();
-      const treeNode = this.convertCategoryTreeToTreeNode(categoryTree);
-      this.setCategories(treeNode.children);
-    } catch (e) {
-      this.setFailedToGetCategories(true);
-      console.log(e);
-    } finally {
-      this.setFailedToGetCategories(false);
-      this.setGettingCategories(false);
-    }
+  private init = () => {
+    void this.getCategories();
   };
 
   private convertCategoryTreeToTreeNode = (category: CategoryTreeType): TreeNodeType => {
@@ -76,15 +78,7 @@ export class BrickStore {
     return treeNode;
   };
 
-  private toggleCategory = (id: string) => {
-    let categoryTreeCopy = toJS(this.categoryTree);
-    categoryTreeCopy = findNodeByIdAndUpdate(categoryTreeCopy, id, node => ({ ...node, enabled: !node.enabled }));
-    this.setCategories(categoryTreeCopy);
-  };
-  // endregion
-
-  // region EVENTS
-  onGetCategories = async () => {
+  private getCategories = async () => {
     try {
       this.setGettingCategories(true);
       const response = await this.CategoryService.getCategories();
@@ -99,9 +93,25 @@ export class BrickStore {
       this.setGettingCategories(false);
     }
   };
+  // endregion
+
+  // region EVENTS
+  onGetCategories = () => {
+    void this.getCategories();
+  };
 
   onToggleCategory = (id: string) => {
-    this.toggleCategory(id);
+    let categoryTreeCopy = toJS(this.categoryTree);
+    categoryTreeCopy = findNodeByIdAndUpdate(categoryTreeCopy, id, node => ({ ...node, enabled: !node.enabled }));
+    this.setCategories(categoryTreeCopy);
+  };
+
+  onSetCategoryLabel = (id: string, label: string) => {
+    let categoryTreeCopy = toJS(this.categoryTree);
+    categoryTreeCopy = findNodeByIdAndUpdate(categoryTreeCopy, id, node => ({ ...node, label }));
+    this.setCategories(categoryTreeCopy);
+    this.setEditingLabel(null);
+    this.setEditingId(null);
   };
   // endregion
 }

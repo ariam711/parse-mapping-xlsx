@@ -4,7 +4,7 @@ import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/arya-blue/theme.css';
 import 'primereact/resources/primereact.css';
 import { Tree } from 'primereact/tree';
-import { Box, Button, Checkbox, SxProps, Typography } from '@mui/material';
+import { Box, Button, Checkbox, SxProps, TextField, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
 
 // region STYLES
@@ -39,23 +39,73 @@ const nodeStyles: SxProps = {
 };
 
 const nodeLabelStyles: SxProps = {
-  padding: '9px 0'
+  ':hover': {
+    cursor: 'text',
+    border: '1px solid',
+    padding: '5px 16px 0 11px',
+    borderRadius: '5px',
+    borderColor: 'primary.main'
+  },
+  padding: '6px 16px 0 12px'
 };
 
 const checkboxStyles: SxProps = {
   ml: ''
 };
 
+const nodeLabelEditorStyles: SxProps = {
+  input: {
+    height: '42px',
+    padding: '0px 13px'
+  }
+};
+
 // endregion
 
 const Brick = (): JSX.Element => {
-  const { onGetCategories, gettingCategories, failedToGetCategories, categoryTree, onToggleCategory } =
-    useContext(ContextBrickStore);
+  const {
+    onGetCategories,
+    gettingCategories,
+    failedToGetCategories,
+    categoryTree,
+    onToggleCategory,
+    onSetCategoryLabel,
+    setEditingLabel,
+    setEditingId,
+    editingLabel,
+    editingId
+  } = useContext(ContextBrickStore);
 
   const nodeTemplate = (node: any) => {
     return (
       <Box sx={nodeStyles}>
-        <Box sx={nodeLabelStyles}>{node.label}</Box>
+        {editingLabel && editingId === node.key ? (
+          <TextField
+            sx={nodeLabelEditorStyles}
+            autoFocus
+            onChange={event => {
+              setEditingLabel(event.target.value);
+            }}
+            onBlur={() => {
+              onSetCategoryLabel(editingId as string, editingLabel);
+            }}
+            onKeyPress={event => {
+              if (event.key === 'Enter') {
+                onSetCategoryLabel(editingId as string, editingLabel);
+              }
+            }}
+            value={editingLabel}
+          />
+        ) : (
+          <Box
+            sx={nodeLabelStyles}
+            onDoubleClick={() => {
+              setEditingLabel(node.label);
+              setEditingId(node.key);
+            }}>
+            {node.label}
+          </Box>
+        )}
         <Checkbox
           sx={checkboxStyles}
           checked={node.enabled}
