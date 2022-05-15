@@ -10,7 +10,7 @@ import { TreeNodeType } from './types/TreeNodeType';
 import { AddBoxOutlined, Delete } from '@mui/icons-material';
 import '../../assets/css/menu.css';
 import brick from './templates/brick';
-import { flexshopper } from './scripts/flexshopper';
+import { flexshopper } from './legacy/flexshopper';
 import {
   backgroundStyles,
   errorStyles,
