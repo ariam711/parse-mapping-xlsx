@@ -6,6 +6,7 @@ import 'primereact/resources/primereact.css';
 import { Tree } from 'primereact/tree';
 import { Box, Button, Checkbox, SxProps, TextField, Typography } from '@mui/material';
 import { observer } from 'mobx-react-lite';
+import { TreeNodeType } from './types/TreeNodeType';
 
 // region STYLES
 
@@ -64,16 +65,17 @@ const nodeLabelEditorStyles: SxProps = {
 
 const Brick = (): JSX.Element => {
   const {
-    onGetCategories,
     gettingCategories,
     failedToGetCategories,
     categoryTree,
+    editingLabel,
+    editingId,
+    onGetCategories,
     onToggleCategory,
     onSetCategoryLabel,
+    setCategories,
     setEditingLabel,
-    setEditingId,
-    editingLabel,
-    editingId
+    setEditingId
   } = useContext(ContextBrickStore);
 
   const nodeTemplate = (node: any) => {
@@ -128,7 +130,14 @@ const Brick = (): JSX.Element => {
         </Box>
       </Box>
       <Box sx={treeContainerStyles}>
-        <Tree value={categoryTree} dragdropScope="tree" nodeTemplate={nodeTemplate} />
+        <Tree
+          value={categoryTree}
+          dragdropScope="tree"
+          onDragDrop={event => {
+            setCategories(event.value as TreeNodeType[]);
+          }}
+          nodeTemplate={nodeTemplate}
+        />
       </Box>
     </Box>
   );
