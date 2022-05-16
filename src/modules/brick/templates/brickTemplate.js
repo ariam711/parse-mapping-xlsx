@@ -1,4 +1,4 @@
-const brick = `
+const brickTemplate = `
 <div class='header-menu-wrapper custom-menu'>
   <div class='menu-item has-submenu'>
     <div class='menu-title'><a>Rugs</a></div>
@@ -134,4 +134,4 @@ const brick = `
 </div>
 `;
 
-export default brick;
+export default brickTemplate;

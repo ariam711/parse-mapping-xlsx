@@ -9,7 +9,6 @@ import { observer } from 'mobx-react-lite';
 import { TreeNodeType } from './types/TreeNodeType';
 import { AddBoxOutlined, Delete } from '@mui/icons-material';
 import '../../assets/css/menu.css';
-import brick from './templates/brick';
 import { flexshopper } from './legacy/flexshopper';
 import {
   backgroundStyles,
@@ -29,6 +28,7 @@ const Brick = (): JSX.Element => {
     categoryTree,
     editingLabel,
     editingId,
+    brick,
     onGetCategories,
     onToggleCategory,
     onSetCategoryLabel,
@@ -39,10 +39,10 @@ const Brick = (): JSX.Element => {
     setEditingId
   } = useContext(ContextBrickStore);
 
-  // component did mount
+  // attach jquery menu listeners on mount, and everytime the brick computed changes
   useEffect(() => {
     flexshopper();
-  }, []);
+  }, [brick]);
 
   const labelEditorTemplate = (
     <TextField

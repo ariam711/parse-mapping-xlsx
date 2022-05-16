@@ -1,10 +1,11 @@
-import { action, makeObservable, observable, toJS } from 'mobx';
+import { action, computed, makeObservable, observable, toJS } from 'mobx';
 import { CategoryTreeType } from '../types/CategoryTreeType';
 import CategoryService from '../services/CategoryService';
 import { TreeNodeType } from '../types/TreeNodeType';
 import { findNodeByIdAndDelete, findNodeByIdAndInsert, findNodeByIdAndUpdate } from '../../../utils/tree';
 import { generateUrlKey } from '../../../utils/generateUrlKey';
 import randomstring from 'randomstring';
+import brickTemplate from '../templates/brickTemplate';
 
 export class BrickStore {
   // region ATTRIBUTES
@@ -23,6 +24,7 @@ export class BrickStore {
       failedToGetCategories: observable,
       editingLabel: observable,
       editingId: observable,
+      brick: computed,
 
       setCategories: action,
       setGettingCategories: action,
@@ -33,6 +35,22 @@ export class BrickStore {
     this.CategoryService = new CategoryService();
     void this.init();
   }
+
+  // region GETTERS
+  get brick() {
+    const rootCategory: TreeNodeType = {
+      key: 'root',
+      label: 'Root',
+      url: '',
+      level: 0,
+      data: '',
+      enabled: true,
+      icon: '',
+      children: toJS(this.categoryTree)
+    };
+    return this.generateTemplate(rootCategory, brickTemplate);
+  }
+  // endregion
 
   // region SETTERS
   setCategories = (categories: TreeNodeType[]) => {
@@ -54,6 +72,7 @@ export class BrickStore {
   setEditingId = (id: string | null) => {
     this.editingId = id;
   };
+
   // endregion
 
   // region METHODS
@@ -68,6 +87,7 @@ export class BrickStore {
     const treeNode: TreeNodeType = {
       key: category.id.toString(),
       label: category.name,
+      level: category.level - 1,
       url,
       data: category.id.toString(),
       enabled: true,
@@ -97,6 +117,79 @@ export class BrickStore {
       this.setFailedToGetCategories(false);
       this.setGettingCategories(false);
     }
+  };
+
+  private generateTemplate = (
+    { level, url, label, children, enabled }: TreeNodeType,
+    accumulatedTemplate = ''
+  ): string => {
+    if (!enabled) return accumulatedTemplate;
+    let template = '';
+    switch (level) {
+      case 0:
+        template = accumulatedTemplate;
+        break;
+      case 1:
+        template = `
+<div class='menu-item has-submenu'>
+  <div class='menu-title'><a>${label}</a></div>
+  ${
+    children?.length
+      ? `
+  <div class='menu-content-wrap'> 
+    <div class='menu-content'>
+      {{category2}}
+    </div>
+    <div class='menu-bottom-content'>
+        <div class='menu-bottom-item'><a href="{{store url='${url}'}}">Shop All ${label}</a></div>
+      </div>
+  </div>`
+      : ''
+  }
+</div>`;
+        break;
+      case 2:
+        template = `
+<div class='menu-content-item has-modile-submenu'>
+  <div class='menu-content-item-header'>${label}</div>
+    ${
+      children?.length
+        ? `
+    <div class='menu-content-item-submenu'>
+      <div class='submenu-item'>
+        <ol>
+          {{category3}}
+        </ol>
+      </div>
+    </div>`
+        : ''
+    }
+</div>`;
+        break;
+      case 3:
+        template = `
+          <li><a href="{{store url='${url}'}}">${label}</a>
+            ${children?.length ? `<ol>{{category4}}</ol>` : ''} 
+          </li>`;
+        break;
+      case 4:
+        template = `
+          <li><a href="{{store url='${url}'}}">${label}</a></li>`;
+        break;
+      default:
+        break;
+    }
+
+    template = accumulatedTemplate.replace(`{{category${level}}}`, `${template}{{category${level}}}`);
+
+    if (children?.length) {
+      children.forEach(child => {
+        template = `${this.generateTemplate(child, template)}`;
+      });
+      template.replace(`{{category${level}}}`, '');
+    }
+
+    return template.replace(`{{category${level + 1}}}`, '');
   };
   // endregion
 
@@ -136,6 +229,7 @@ export class BrickStore {
     const newNode: TreeNodeType = {
       key: randomstring.generate({ length: 5, capitalization: 'lowercase' }),
       label: 'New Category',
+      level: 0,
       url: '',
       data: 'New Category',
       enabled: true,
