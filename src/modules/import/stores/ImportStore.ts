@@ -265,7 +265,13 @@ export class ImportStore {
             case 'actual_product_weight':
             case 'actual_product_length':
             case 'actual_product_width':
-            case 'actual_product_height': {
+            case 'actual_product_height':
+            case 'shipping_weight_lbs':
+            case 'shipping_weight_lbs_b1':
+            case 'carton_length_in_b1':
+            case 'carton_height_in_b1':
+            case 'carton_width_in_b1':
+            case 'layer_specs': {
               const feat = normalizeText(String(value)).replace(/\s*[•*]\s*/gi, '');
               if (feat !== 'N/A') {
                 tmp[mapped] = feat;

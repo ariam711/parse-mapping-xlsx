@@ -9,6 +9,7 @@ export function parseSouthBayFeatures(text: string, obj: any) {
   normalized = normalized.replace(/(\s*ADJUSTABLE BASE FEATURES:\s*)/gi, '$I$$$AF$');
   normalized = normalized.replace(/(\s*ADJUSTABLE BASE POSITIONS:\s*)/gi, '$I$$$AP$');
   normalized = normalized.replace(/(\s*SET-UP, DELIVERY, SAFETY, WARRANTY:\s*)/gi, '$I$$$DL$');
+  normalized = normalized.replace(/(\s*SET-UP, DELIVERY, SAFETY, & WARRANTY:\s*)/gi, '$I$$$DW$');
 
   const [description, ...rest] = normalized.split('$I$');
 
