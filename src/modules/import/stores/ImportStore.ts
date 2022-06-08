@@ -210,7 +210,7 @@ export class ImportStore {
       product_websites: 'base',
       flooring_type: 'furniture', // TODO add this to select field
       shipping_info: '',
-      shipping_range: ['Linon', 'Monarch'].includes(this.attributeSet) ? '7-13' : '5-12'
+      shipping_range: ['Linon', 'Monarch', 'PDG'].includes(this.attributeSet) ? '7-13' : '5-12'
     };
 
     const headersWithOutMapping = new Set();
