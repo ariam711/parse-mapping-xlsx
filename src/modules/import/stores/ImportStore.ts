@@ -190,6 +190,20 @@ export class ImportStore {
     });
   };
 
+  getShippingRange = (attributeSet: AttributeSetType): string => {
+    switch (attributeSet) {
+      case 'Coaster':
+        return '7-12';
+      case 'Linon':
+      case 'Monarch':
+      case 'PDG': {
+        return '7-13';
+      }
+      default:
+        return '5-12';
+    }
+  };
+
   parseDataToMapping = () => {
     const newBook: any[] = [];
     const data = clone(this.data);
@@ -210,7 +224,7 @@ export class ImportStore {
       product_websites: 'base',
       flooring_type: 'furniture', // TODO add this to select field
       shipping_info: '',
-      shipping_range: ['Linon', 'Monarch', 'PDG'].includes(this.attributeSet) ? '7-13' : '5-12'
+      shipping_range: this.getShippingRange(this.attributeSet)
     };
 
     const headersWithOutMapping = new Set();

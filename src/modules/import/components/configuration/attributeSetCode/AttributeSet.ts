@@ -11,7 +11,8 @@ export const AttributesSet = {
   FURNITURE: 'Furniture',
   SOUTHBAY: 'South Bay',
   OLLIIX: 'Olliix',
-  PDG: 'PDG'
+  PDG: 'PDG',
+  COASTER: 'Coaster'
 } as const;
 
 export type AttributeSetType = Values<typeof AttributesSet>;

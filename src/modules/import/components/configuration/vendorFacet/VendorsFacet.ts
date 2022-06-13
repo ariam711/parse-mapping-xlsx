@@ -9,7 +9,8 @@ export const VendorsFacet = {
   LINON: 'Linon',
   MONARCH: 'Monarch',
   OLLIIX: 'Olliix',
-  PDG: 'PDG'
+  PDG: 'PDG',
+  COASTER: 'Coaster'
 } as const;
 
 export type VendorFacetType = Values<typeof VendorsFacet>;
