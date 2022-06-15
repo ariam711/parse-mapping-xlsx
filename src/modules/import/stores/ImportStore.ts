@@ -192,6 +192,7 @@ export class ImportStore {
 
   getShippingRange = (attributeSet: AttributeSetType): string => {
     switch (attributeSet) {
+      case 'Powell':
       case 'Coaster':
         return '7-12';
       case 'Linon':

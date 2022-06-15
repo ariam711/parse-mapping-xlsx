@@ -1,5 +1,29 @@
 [
   [
+    "girth",
+    [
+      "girth"
+    ]
+  ],
+  [
+    "ahs_surcharge_weight",
+    [
+      "AHS Surcharge Weight"
+    ]
+  ],
+  [
+    "ahs_surcharge_girth",
+    [
+      "AHS Surcharge Girth"
+    ]
+  ],
+  [
+    "oversized_surcharge_girth",
+    [
+      "Oversized Surcharge Girth"
+    ]
+  ],
+  [
     "actual_product_height",
     [
       "Product Actual Height"
