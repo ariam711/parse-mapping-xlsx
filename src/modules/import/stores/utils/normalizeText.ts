@@ -13,6 +13,6 @@ export function normalizeText(text: string): string {
     .replace(/\x1c */gi, '“')
     .replace(/[·]/gi, '•')
     .replace(/ *; */gi, '; ')
-    .replace(/[^A-Za-zÀ-ÿ\w$*_+~.,()'"”!\-:@/•\n\t ;‘’=%&]+/gi, '')
+    .replace(/[^A-Za-zÀ-ÿ\w$*_+~.,()'"”!\-:@/•\n\t ;‘’=%&?]+/gi, '')
     .replace(/ +/gi, ' ');
 }
