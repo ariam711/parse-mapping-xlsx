@@ -194,6 +194,7 @@ export class ImportStore {
     switch (attributeSet) {
       case 'Powell':
       case 'Coaster':
+      case 'FOA':
         return '7-12';
       case 'Linon':
       case 'Monarch':
